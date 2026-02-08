@@ -6,7 +6,8 @@ get_header();
 
 // Get page intro fields
 $intro_background_image = get_field('page_background_image');
-$intro_text = get_field('page_intro_text');
+$intro_title = get_field('page_intro_title');
+$intro_post = get_field('page_intro_text');
 
 // Get hero background image
 $background_image = '';
@@ -24,14 +25,18 @@ if ( $image_ids ) {
 ?>
 
 <div class="page-content" data-nav-position="top-center">
-    <?php if ($intro_background_image): ?>
+    <?php if ($intro_background_image && $intro_post): ?>
         <div 
             class="text-box-slide" 
             style="background-image: url('<?php echo esc_url($intro_background_image['url']); ?>');"
             data-origin="top-center"
         >
             <div class="text-box-content">
-                <?php echo wp_kses_post($intro_text); ?>
+                <h2><?php echo esc_html($intro_title); ?></h2>
+                <?php 
+                // Display the full post content with formatting
+                echo apply_filters('the_content', $intro_post->post_content); 
+                ?>
             </div>
         </div>
     <?php endif; ?>

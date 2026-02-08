@@ -13,21 +13,27 @@ if ($platform_page) {
     
     // Get ACF fields from the Platform page
     $intro_background_image = get_field('page_background_image', $platform_page->ID);
-    $intro_text = get_field('page_intro_text', $platform_page->ID);
+    $intro_title = get_field('page_intro_title', $platform_page->ID);
+    $intro_post = get_field('page_intro_text', $platform_page->ID);
     
     wp_reset_postdata();
 }
 ?>
 
 <div class="page-content" data-nav-position="bottom-center">
-    <?php if (!empty($intro_background_image)): ?>
+    <?php if ($intro_background_image && $intro_post): ?>
         <div 
             class="text-box-slide" 
             style="background-image: url('<?php echo esc_url($intro_background_image['url']); ?>');"
             data-origin="bottom-center"
         >
             <div class="text-box-content">
-                <?php echo wp_kses_post($intro_text); ?>
+                <h2><?php echo esc_html($intro_title); ?></h2>
+                <?php 
+                    if ($intro_post) {
+                        echo apply_filters('the_content', $intro_post->post_content);
+                    }
+                ?>
             </div>
         </div>
     <?php endif; ?>

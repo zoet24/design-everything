@@ -309,6 +309,7 @@
   padding: 1rem;
   background: #e6e6e6;
   display: flex;
+  font-size: 1.125rem;
 }
 .nav ul {
   list-style: none;
@@ -325,36 +326,51 @@
 
 .text-box-slide {
   position: fixed;
-  width: 400px;
-  height: 300px;
+  width: 33%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   z-index: 100;
-  padding: 2rem;
-  color: white;
+  overflow: hidden;
 }
 .text-box-slide[data-origin=top-center] {
-  top: 100px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
+  width: 50%;
+  height: 75%;
+}
+.text-box-slide[data-origin=top-center] h2 {
+  text-align: center;
 }
 .text-box-slide[data-origin=bottom-left] {
-  bottom: 100px;
-  left: 50px;
+  top: 0;
+  left: 0;
 }
 .text-box-slide[data-origin=bottom-center] {
-  bottom: 100px;
+  top: 0;
   left: 50%;
   transform: translateX(-50%);
 }
+.text-box-slide[data-origin=bottom-center] h2 {
+  text-align: center;
+}
 .text-box-slide[data-origin=bottom-right] {
-  bottom: 100px;
-  right: 50px;
+  top: 0;
+  right: 0;
 }
 
 .text-box-content {
   position: relative;
   z-index: 2;
+  padding: 1rem;
+}
+.text-box-content h2 {
+  font-family: "Roobert-Regular", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-transform: uppercase;
+  padding-bottom: 1rem;
 }
 
 * {

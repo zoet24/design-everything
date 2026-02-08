@@ -1,38 +1,63 @@
+@use "variables" as *;
+
 .text-box-slide {
   position: fixed;
-  width: 400px;
-  height: 300px;
+  width: 33%;
+  height: 100%;
   background-size: cover;
   background-position: center;
   z-index: 100;
-  padding: 2rem;
-  color: white;
+  // padding: 2rem;
+  overflow: hidden;
   
-  // Position it visibly on screen
+  // Design Everything
   &[data-origin="top-center"] {
-    top: 100px; // Visible position
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
+    width: 50%;
+    height: 75%;
+
+    h2 {
+      text-align: center;
+    }
   }
   
+  // People
   &[data-origin="bottom-left"] {
-    bottom: 100px;
-    left: 50px;
+    top: 0;
+    left: 0;
   }
   
+  // Platform
   &[data-origin="bottom-center"] {
-    bottom: 100px;
+    top: 0;
     left: 50%;
     transform: translateX(-50%);
+
+    h2 {
+      text-align: center;
+    }
   }
   
+  // Progress
   &[data-origin="bottom-right"] {
-    bottom: 100px;
-    right: 50px;
+    top: 0;
+    right: 0;
   }
 }
 
 .text-box-content {
   position: relative;
   z-index: 2;
+  padding: $space-md;
+
+
+  h2 {
+    font-family: $font-body;
+    font-weight: 600;
+    font-size: $font-size-lg;
+    text-transform: uppercase;
+    padding-bottom: $space-md;
+  }
 }
