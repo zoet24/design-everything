@@ -1,0 +1,78 @@
+@use "fonts";
+@use "variables" as *;
+@use "./cpts/people-grid/style.scss" as people;
+@use "./cpts/platform-grid/style.scss" as platform;
+@use "./cpts/progress-grid/style.scss" as progress;
+@use "./pages/home.scss" as home;
+@use "./pages/single-progress.scss" as singleProgress;
+@use "./pages/single-platform.scss" as singlePlatform;
+@use "./nav";
+
+// TOZO - consolidate grid scss into shared functionality (maybe leave current class names on, but add generic classes for shared styling from single source of truth)
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $font-body;
+  font-weight: $font-weight-body;
+  color: $colour-text;
+  background-color: $colour-background;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main {
+  flex: 1;
+
+  section {
+    padding-top: $space-container;
+  }
+
+  article {
+    padding-top: $space-container;
+  }
+
+  p {
+    margin-bottom: $space-sm;
+  }
+}
+
+// Containers
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: $space-container;
+}
+
+.content-narrow {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+// About
+.about {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  height: calc(100% + 2rem);
+
+  div {
+    align-self: center;
+    text-align: center;
+  }
+
+  img {
+    max-height: 640px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+}

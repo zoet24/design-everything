@@ -1,0 +1,33 @@
+.fullscreen-columns.is-selected {
+  outline: 2px dashed #007cba;
+  background: rgba(0, 124, 186, 0.05);
+}
+
+/* Editor-only visual boxes */
+.editable-box {
+  background: #fff;
+  border: 1px solid #ddd;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Controls bar */
+.de-controls {
+  background: #f3f4f5;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  border-radius: 4px;
+}
+
+/* Remove image button */
+.remove-image {
+  margin-top: 10px;
+  background: #d63638;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+}

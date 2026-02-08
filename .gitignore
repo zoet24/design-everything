@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+yarn.lock
+package-lock.json
+
+# Build files
+build/
+
+# WordPress
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+EOF

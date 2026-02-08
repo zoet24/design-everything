@@ -1,0 +1,28 @@
+@use "../../variables" as *;
+@use "../../grid" as grid;
+
+.platform-grid {
+  @extend .grid;
+}
+
+.platform-card {
+  @extend .card;
+
+  .platform-link {
+    @extend .card-link;
+  }
+
+  .platform-photo {
+    @extend .card-photo;
+  }
+
+  .platform-content {
+    @extend .card-content;
+  }
+
+  /* Platform-specific styling */
+  .platform-title {
+    font-size: $font-size-lg;
+    font-family: $font-heading;
+  }
+}

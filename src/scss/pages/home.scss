@@ -1,0 +1,20 @@
+.home-hero {
+  min-height: calc(100vh - 140px);
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-hero__overlay {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-hero__logo {
+  max-width: 200px;
+  width: 40%;
+}

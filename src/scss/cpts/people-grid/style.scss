@@ -1,0 +1,106 @@
+@use "../../variables" as *;
+@use "../../grid" as grid;
+
+.people-grid {
+  @extend .grid;
+
+  /* Small screens → 2 columns */
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Medium screens → 3 columns */
+  @media (min-width: 840px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Large screens → 4 columns */
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.person-card {
+  @extend .card;
+
+  .person-photo {
+    @extend .card-photo;
+    position: relative;
+  }
+
+  /* Overlay is unique */
+  .person-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(131, 155, 184, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: $font-size-lg;
+    font-weight: 400;
+
+    .person-bio-container {
+      padding: $space-md;
+    }
+
+    .person-bio {
+      margin-bottom: $space-md;
+    }
+
+    .person-categories {
+      display: flex;
+      flex-wrap: wrap;
+      gap: $space-sm;
+    }
+
+    .person-category {
+      padding: $space-xs $space-sm;
+      border: 1px solid $colour-text;
+      border-radius: $radius-sm;
+      font-size: $font-size-lg;
+      background: rgba(255, 255, 255, 0.1);
+      color: $colour-text;
+    }
+  }
+
+  /* Hover behaviour unique to People */
+  &:hover .person-overlay {
+    opacity: 1;
+  }
+
+  .person-content {
+    @extend .card-content;
+  }
+
+  .person-name {
+    font-size: $font-size-lg;
+    font-family: $font-heading;
+    color: $colour-text;
+  }
+
+  .person-links {
+    display: flex;
+    gap: $space-xs;
+
+    a {
+      color: $colour-primary;
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .person-card .person-photo {
+    height: 480px;
+    img {
+      height: 100%;
+    }
+  }
+}

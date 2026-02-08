@@ -1,0 +1,454 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Roobert-Regular";
+  src: url("../assets/fonts/Roobert-Regular-Regular.woff2") format("woff2"), url("../assets/fonts/Roobert-Regular-Regular.woff") format("woff"), url("../assets/fonts/Roobert-Regular-Regular.ttf") format("truetype"), url("../assets/fonts/Roobert-Regular-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+.grid, .progress-grid, .platform-grid, .people-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: stretch;
+}
+
+/* Generic card */
+.card, .progress-card, .platform-card, .person-card {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  width: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card .card-link, .progress-card .card-link, .platform-card .card-link, .person-card .card-link, .progress-card .progress-link, .platform-card .platform-link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  height: 100%;
+  width: 100%;
+}
+.card .card-photo, .progress-card .card-photo, .platform-card .card-photo, .person-card .card-photo, .progress-card .progress-photo, .platform-card .platform-photo, .person-card .person-photo {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+}
+.card .card-photo img, .progress-card .card-photo img, .platform-card .card-photo img, .person-card .card-photo img, .progress-card .progress-photo img, .platform-card .platform-photo img, .person-card .person-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.card .card-content, .progress-card .card-content, .platform-card .card-content, .person-card .card-content, .progress-card .progress-content, .platform-card .platform-content, .person-card .person-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding-top: 1rem;
+  text-align: left;
+  gap: 0.25rem;
+}
+.card .card-content > *, .progress-card .card-content > *, .platform-card .card-content > *, .person-card .card-content > *, .progress-card .progress-content > *, .platform-card .platform-content > *, .person-card .person-content > * {
+  margin: 0;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .grid, .progress-grid, .platform-grid, .people-grid {
+    grid-template-columns: 1fr;
+  }
+  .card, .progress-card, .platform-card, .person-card {
+    width: 100%;
+  }
+  .card-photo, .progress-card .progress-photo, .platform-card .platform-photo, .person-card .person-photo {
+    height: auto;
+  }
+  .card-photo img, .progress-card .progress-photo img, .platform-card .platform-photo img, .person-card .person-photo img {
+    height: auto;
+  }
+}
+.people-grid {
+  /* Small screens → 2 columns */
+}
+@media (min-width: 600px) {
+  .people-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.people-grid {
+  /* Medium screens → 3 columns */
+}
+@media (min-width: 840px) {
+  .people-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.people-grid {
+  /* Large screens → 4 columns */
+}
+@media (min-width: 1200px) {
+  .people-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.person-card .person-photo {
+  position: relative;
+}
+.person-card {
+  /* Overlay is unique */
+}
+.person-card .person-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(131, 155, 184, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+.person-card .person-overlay .person-bio-container {
+  padding: 1rem;
+}
+.person-card .person-overlay .person-bio {
+  margin-bottom: 1rem;
+}
+.person-card .person-overlay .person-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.person-card .person-overlay .person-category {
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #111827;
+  border-radius: 4px;
+  font-size: 1.125rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #111827;
+}
+.person-card {
+  /* Hover behaviour unique to People */
+}
+.person-card:hover .person-overlay {
+  opacity: 1;
+}
+.person-card .person-name {
+  font-size: 1.125rem;
+  font-family: "Roobert-Regular", system-ui, sans-serif;
+  color: #111827;
+}
+.person-card .person-links {
+  display: flex;
+  gap: 0.25rem;
+}
+.person-card .person-links a {
+  color: #1e40af;
+  text-decoration: none;
+  font-weight: 500;
+}
+.person-card .person-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .person-card .person-photo {
+    height: 480px;
+  }
+  .person-card .person-photo img {
+    height: 100%;
+  }
+}
+.platform-card {
+  /* Platform-specific styling */
+}
+.platform-card .platform-title {
+  font-size: 1.125rem;
+  font-family: "Roobert-Regular", system-ui, sans-serif;
+}
+
+/* Attach the shared classes */
+.progress-card {
+  /* Progress-specific styling */
+}
+.progress-card .progress-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+.progress-card .progress-title {
+  font-size: 1.125rem;
+  font-family: "Roobert-Regular", system-ui, sans-serif;
+}
+.progress-card .progress-description {
+  font-size: 16px;
+  color: #6b7280;
+}
+
+.home-hero {
+  min-height: calc(100vh - 140px);
+  width: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.home-hero__overlay {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-hero__logo {
+  max-width: 200px;
+  width: 40%;
+}
+
+.single-de_progress .progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.single-de_progress .progress-item .progress-header {
+  text-align: left;
+}
+.single-de_progress .progress-item .progress-header .progress-title {
+  font-size: 1.5rem;
+  font-family: "Roobert-Regular", system-ui, sans-serif;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+.single-de_progress .progress-item .progress-header .progress-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+.single-de_progress .progress-item .progress-photo {
+  width: 100%;
+  max-height: 600px;
+  overflow: hidden;
+}
+.single-de_progress .progress-item .progress-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+.single-de_progress .progress-item .progress-content {
+  font-size: 16px;
+  color: #111827;
+  line-height: 1.6;
+}
+.single-de_progress .progress-item .progress-content p {
+  margin-bottom: 1rem;
+}
+
+.single-de_platform .platform-item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.single-de_platform .platform-item .platform-header {
+  text-align: left;
+}
+.single-de_platform .platform-item .platform-header .platform-title {
+  font-size: 1.5rem;
+  font-family: "Roobert-Regular", system-ui, sans-serif;
+  color: #111827;
+  margin-bottom: 0.25rem;
+}
+.single-de_platform .platform-item .platform-header .platform-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+.single-de_platform .platform-item .platform-photo {
+  width: 100%;
+  max-height: 600px;
+  overflow: hidden;
+}
+.single-de_platform .platform-item .platform-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+}
+.single-de_platform .platform-item .platform-content {
+  font-size: 16px;
+  color: #111827;
+  line-height: 1.6;
+}
+.single-de_platform .platform-item .platform-content p {
+  margin-bottom: 1rem;
+}
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  text-transform: uppercase;
+  text-align: center;
+}
+.site-header .nav ul {
+  justify-content: center;
+}
+
+.site-footer {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+}
+.site-footer .current-menu-item a {
+  text-transform: uppercase;
+}
+
+.nav {
+  padding: 1rem;
+  background: #e6e6e6;
+  display: flex;
+}
+.nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.nav li a {
+  text-decoration: none;
+  color: #111827;
+}
+
+.header-bubble {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  background-color: #ffffff;
+  color: #111827;
+  padding: 1.5rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 66%;
+  height: 100vh;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 25;
+}
+
+.header-bubble[data-open=true] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  animation: bubble-slide-down 0.5s ease forwards;
+}
+
+@keyframes bubble-slide-down {
+  0% {
+    transform: translateX(-50%) translateY(-100%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+.footer-bubble {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: red;
+  color: #111827;
+  padding: 1.5rem 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  width: 66%;
+  height: 100vh;
+  text-align: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 25;
+}
+
+.footer-bubble[data-open=true] {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+  animation: bubble-slide-up 0.5s ease forwards;
+}
+
+@keyframes bubble-slide-up {
+  0% {
+    transform: translateX(-50%) translateY(100%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Roobert-Regular", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 400;
+  color: #111827;
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+main {
+  flex: 1;
+}
+main section {
+  padding-top: 2rem;
+}
+main article {
+  padding-top: 2rem;
+}
+main p {
+  margin-bottom: 0.5rem;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 2rem;
+}
+
+.content-narrow {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.about {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  height: calc(100% + 2rem);
+}
+.about div {
+  align-self: center;
+  text-align: center;
+}
+.about img {
+  max-height: 640px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/*# sourceMappingURL=style.css.map */

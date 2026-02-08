@@ -1,0 +1,48 @@
+@use "../variables" as *;
+
+.single-de_platform {
+  .platform-item {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+
+    .platform-header {
+      text-align: left;
+
+      .platform-title {
+        font-size: $font-size-xl;
+        font-family: $font-heading;
+        color: $colour-text;
+        margin-bottom: $space-xs;
+      }
+
+      .platform-date {
+        font-size: $font-size-sm;
+        color: $colour-text-light;
+      }
+    }
+
+    .platform-photo {
+      width: 100%;
+      max-height: 600px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        display: block;
+      }
+    }
+
+    .platform-content {
+      font-size: $font-size-base;
+      color: $colour-text;
+      line-height: 1.6;
+
+      p {
+        margin-bottom: $space-md;
+      }
+    }
+  }
+}
