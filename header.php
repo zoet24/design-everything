@@ -12,13 +12,25 @@
 
 <header class="site-header">
   <nav class="nav">
-    <?php
-    wp_nav_menu([
-        'theme_location' => 'primary',
-        'menu_class' => 'nav-menu',
-        'container' => false,
-    ]);
-    ?>
+    <div class="nav-center">
+      <?php
+      wp_nav_menu([
+          'theme_location' => 'primary',
+          'container' => false,
+          'menu_class' => 'nav-menu nav-menu--primary',
+      ]);
+      ?>
+    </div>
+
+    <div class="nav-right">
+      <?php
+      wp_nav_menu([
+          'theme_location' => 'header_secondary',
+          'container' => false,
+          'menu_class' => 'nav-menu nav-menu--secondary',
+      ]);
+      ?>
+    </div>
   </nav>
 </header>
 

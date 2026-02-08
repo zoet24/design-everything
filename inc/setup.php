@@ -5,6 +5,7 @@
 function de_register_menus() {
     register_nav_menus([
         'primary' => __('Primary Menu', 'design-everything'),
+        'header_secondary' => __('Header Secondary Menu', 'design-everything'),
         'footer'  => __('Footer Menu', 'design-everything'),
     ]);
 }

@@ -26,7 +26,9 @@
   padding: $space-md;
   background: $colour-bg;
   display: flex;
+  align-items: center;
   font-size: $font-size-lg;
+  font-weight: 600;
 
   ul {
     list-style: none;
@@ -40,5 +42,23 @@
   li a {
     text-decoration: none;
     color: $colour-text;
+  }
+}
+
+// Design Everything
+.nav-center {
+  margin: 0 auto;
+}
+
+// Other, Insta, Shop
+.nav-right {
+  position: absolute;
+  right: $space-md;
+
+  font-size: $font-size-sm;
+  text-transform: none;
+
+  li {
+    margin-left: $space-sm;
   }
 }

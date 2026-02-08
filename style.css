@@ -309,7 +309,9 @@
   padding: 1rem;
   background: #e6e6e6;
   display: flex;
+  align-items: center;
   font-size: 1.125rem;
+  font-weight: 600;
 }
 .nav ul {
   list-style: none;
@@ -322,6 +324,20 @@
 .nav li a {
   text-decoration: none;
   color: #111827;
+}
+
+.nav-center {
+  margin: 0 auto;
+}
+
+.nav-right {
+  position: absolute;
+  right: 1rem;
+  font-size: 0.875rem;
+  text-transform: none;
+}
+.nav-right li {
+  margin-left: 0.5rem;
 }
 
 .text-box-slide {
