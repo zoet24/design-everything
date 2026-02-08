@@ -323,74 +323,40 @@
   color: #111827;
 }
 
-.header-bubble {
-  position: absolute;
-  top: 0;
+.text-box-slide {
+  position: fixed;
+  width: 400px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  z-index: 100;
+  padding: 2rem;
+  color: white;
+}
+.text-box-slide[data-origin=top-center] {
+  top: 100px;
   left: 50%;
-  transform: translateX(-50%) translateY(-20px);
-  background-color: #ffffff;
-  color: #111827;
-  padding: 1.5rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  width: 66%;
-  height: 100vh;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  z-index: 25;
+  transform: translateX(-50%);
 }
-
-.header-bubble[data-open=true] {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-  animation: bubble-slide-down 0.5s ease forwards;
+.text-box-slide[data-origin=bottom-left] {
+  bottom: 100px;
+  left: 50px;
 }
-
-@keyframes bubble-slide-down {
-  0% {
-    transform: translateX(-50%) translateY(-100%);
-  }
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-}
-.footer-bubble {
-  position: absolute;
-  bottom: 100%;
+.text-box-slide[data-origin=bottom-center] {
+  bottom: 100px;
   left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: red;
-  color: #111827;
-  padding: 1.5rem 2.5rem;
-  border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  width: 66%;
-  height: 100vh;
-  text-align: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.5s ease;
-  z-index: 25;
+  transform: translateX(-50%);
+}
+.text-box-slide[data-origin=bottom-right] {
+  bottom: 100px;
+  right: 50px;
 }
 
-.footer-bubble[data-open=true] {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
-  animation: bubble-slide-up 0.5s ease forwards;
+.text-box-content {
+  position: relative;
+  z-index: 2;
 }
 
-@keyframes bubble-slide-up {
-  0% {
-    transform: translateX(-50%) translateY(100%);
-  }
-  100% {
-    transform: translateX(-50%) translateY(0);
-  }
-}
 * {
   box-sizing: border-box;
   margin: 0;

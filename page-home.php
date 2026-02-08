@@ -4,9 +4,12 @@ Template Name: Home
 */
 get_header();
 
-$background_image = '';
+// Get page intro fields
+$intro_background_image = get_field('page_background_image');
+$intro_text = get_field('page_intro_text');
 
-// Get comma-separated image IDs from ACF (no 'option' parameter)
+// Get hero background image
+$background_image = '';
 $image_ids = get_field( 'hero_image_ids' );
 
 if ( $image_ids ) {
@@ -20,15 +23,29 @@ if ( $image_ids ) {
 }
 ?>
 
-<main class="home-hero" style="background-image: url('<?php echo esc_url( $background_image ); ?>');">
-  <div class="home-hero__overlay">
-    <img
-      src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/de-logo-white.png' ); ?>"
-      alt="<?php bloginfo( 'name' ); ?>"
-      class="home-hero__logo"
-    />
-  </div>
-</main>
+<div class="page-content" data-nav-position="top-center">
+    <?php if ($intro_background_image): ?>
+        <div 
+            class="text-box-slide" 
+            style="background-image: url('<?php echo esc_url($intro_background_image['url']); ?>');"
+            data-origin="top-center"
+        >
+            <div class="text-box-content">
+                <?php echo wp_kses_post($intro_text); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <main class="home-hero" style="background-image: url('<?php echo esc_url( $background_image ); ?>');">
+      <div class="home-hero__overlay">
+        <img
+          src="<?php echo esc_url( get_template_directory_uri() . '/assets/images/de-logo-white.png' ); ?>"
+          alt="<?php bloginfo( 'name' ); ?>"
+          class="home-hero__logo"
+        />
+      </div>
+    </main>
+</div>
 
 <?php
 get_footer();

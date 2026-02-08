@@ -1,0 +1,38 @@
+.text-box-slide {
+  position: fixed;
+  width: 400px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;
+  z-index: 100;
+  padding: 2rem;
+  color: white;
+  
+  // Position it visibly on screen
+  &[data-origin="top-center"] {
+    top: 100px; // Visible position
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  &[data-origin="bottom-left"] {
+    bottom: 100px;
+    left: 50px;
+  }
+  
+  &[data-origin="bottom-center"] {
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  &[data-origin="bottom-right"] {
+    bottom: 100px;
+    right: 50px;
+  }
+}
+
+.text-box-content {
+  position: relative;
+  z-index: 2;
+}
