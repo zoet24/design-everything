@@ -1,6 +1,6 @@
 @use "fonts";
 @use "variables" as *;
-@use "./cpts/people-grid/style.scss" as people;
+@use "./cpts/people/style.scss" as people;
 @use "./cpts/platform-grid/style.scss" as platform;
 @use "./cpts/progress-grid/style.scss" as progress;
 @use "./pages/home.scss" as home;
@@ -27,21 +27,26 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
-main {
-  flex: 1;
-
-  section {
-    padding-top: $space-container;
-  }
-
-  article {
-    padding-top: $space-container;
-  }
-
-  p {
-    margin-bottom: $space-sm;
-  }
+.page-content {
+  min-height: 100vh;
+  padding: 60px 0;
 }
+
+// main {
+//   flex: 1;
+
+//   section {
+//     padding-top: $space-container;
+//   }
+
+//   article {
+//     padding-top: $space-container;
+//   }
+
+//   p {
+//     margin-bottom: $space-sm;
+//   }
+// }
 
 // Containers
 .container {

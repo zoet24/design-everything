@@ -49,6 +49,7 @@
   padding-top: 1rem;
   text-align: left;
   gap: 0.25rem;
+  width: 100%;
 }
 .card .card-content > *, .progress-card .card-content > *, .platform-card .card-content > *, .person-card .card-content > *, .progress-card .progress-content > *, .platform-card .platform-content > *, .person-card .person-content > * {
   margin: 0;
@@ -69,90 +70,50 @@
     height: auto;
   }
 }
-.people-grid {
-  /* Small screens → 2 columns */
+.people-list {
+  column-count: 2;
+  column-gap: 2rem;
+  column-fill: auto;
+  list-style: none;
+  margin-top: 1rem;
+  height: 100%;
 }
-@media (min-width: 600px) {
+.people-list li a {
+  text-decoration: none;
+  color: #111827;
+}
+.people-list li a:hover {
+  text-decoration: underline;
+}
+
+.people-grid {
+  width: 66.666%;
+  margin-left: auto;
+  /* Small screens → 2 columns */
+  /* Medium screens → 2 columns */
+}
+@media (min-width: 840px) {
   .people-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 .people-grid {
-  /* Medium screens → 3 columns */
-}
-@media (min-width: 840px) {
-  .people-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-.people-grid {
-  /* Large screens → 4 columns */
+  /* Large screens → 3 columns */
 }
 @media (min-width: 1200px) {
   .people-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .person-card .person-photo {
   position: relative;
 }
-.person-card {
-  /* Overlay is unique */
-}
-.person-card .person-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(131, 155, 184, 0.8);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-.person-card .person-overlay .person-bio-container {
-  padding: 1rem;
-}
-.person-card .person-overlay .person-bio {
-  margin-bottom: 1rem;
-}
-.person-card .person-overlay .person-categories {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-.person-card .person-overlay .person-category {
-  padding: 0.25rem 0.5rem;
-  border: 1px solid #111827;
-  border-radius: 4px;
-  font-size: 1.125rem;
-  background: rgba(255, 255, 255, 0.1);
-  color: #111827;
-}
-.person-card {
-  /* Hover behaviour unique to People */
-}
-.person-card:hover .person-overlay {
-  opacity: 1;
-}
 .person-card .person-name {
   font-size: 1.125rem;
   font-family: "Roobert-Regular", system-ui, sans-serif;
   color: #111827;
-}
-.person-card .person-links {
-  display: flex;
-  gap: 0.25rem;
-}
-.person-card .person-links a {
-  color: #1e40af;
-  text-decoration: none;
-  font-weight: 500;
-}
-.person-card .person-links a:hover {
-  text-decoration: underline;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -450,6 +411,7 @@
   position: relative;
   z-index: 2;
   padding: 1rem;
+  height: 100%;
 }
 .text-box-content h2 {
   font-family: "Roobert-Regular", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -475,17 +437,9 @@ body {
   grid-template-rows: auto 1fr auto;
 }
 
-main {
-  flex: 1;
-}
-main section {
-  padding-top: 2rem;
-}
-main article {
-  padding-top: 2rem;
-}
-main p {
-  margin-bottom: 0.5rem;
+.page-content {
+  min-height: 100vh;
+  padding: 60px 0;
 }
 
 .container {

@@ -1,0 +1,71 @@
+@use "../../variables" as *;
+@use "../../grid" as grid;
+
+.people-list {
+  column-count: 2;
+  column-gap: 2rem;
+  column-fill: auto;
+  list-style: none;
+  margin-top: $space-md;
+  height: 100%;
+
+  li a {
+      text-decoration: none;
+      color: $colour-text;
+
+      &:hover {
+          text-decoration: underline;
+      }
+  }
+}
+
+.people-grid {
+  @extend .grid;
+
+  width: 66.666%;
+  margin-left: auto;
+
+  /* Small screens → 2 columns */
+  // @media (min-width: 600px) {
+  //   grid-template-columns: repeat(2, 1fr);
+  // }
+
+  /* Medium screens → 2 columns */
+  @media (min-width: 840px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Large screens → 3 columns */
+  @media (min-width: 1200px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.person-card {
+  @extend .card;
+
+  .person-photo {
+    @extend .card-photo;
+    position: relative;
+  }
+
+  .person-content {
+    @extend .card-content;
+  }
+
+  .person-name {
+    font-size: $font-size-lg;
+    font-family: $font-heading;
+    color: $colour-text;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .person-card .person-photo {
+    height: 480px;
+    img {
+      height: 100%;
+    }
+  }
+}
