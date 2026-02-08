@@ -1,8 +1,10 @@
 @use "variables" as *;
 
 .site-header {
-  position: sticky;
+  position: fixed; // Change from sticky
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
   text-transform: uppercase;
   text-align: center;
@@ -18,8 +20,10 @@
 }
 
 .site-footer {
-  position: sticky;
+  position: fixed; // Change from sticky
   bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
 
   .nav {
@@ -137,5 +141,9 @@
 
   li {
     margin-left: $space-sm;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

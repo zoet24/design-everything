@@ -189,15 +189,17 @@
 }
 
 .home-hero {
-  min-height: calc(100vh - 140px);
+  height: 100vh;
   width: 100%;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-hero__overlay {
-  height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
@@ -286,8 +288,10 @@
 }
 
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
   text-transform: uppercase;
   text-align: center;
@@ -301,8 +305,10 @@
 }
 
 .site-footer {
-  position: sticky;
+  position: fixed;
   bottom: 0;
+  left: 0;
+  right: 0;
   z-index: 10;
 }
 .site-footer .nav {
@@ -399,6 +405,9 @@
 }
 .nav-right li {
   margin-left: 0.5rem;
+}
+.nav-right li:hover {
+  text-decoration: underline;
 }
 
 .text-box-slide {
