@@ -12,6 +12,7 @@
           'theme_location' => 'footer',
           'container'      => false,
           'menu_class'     => 'footer-menu',
+          'walker' => new Background_Nav_Walker(),
         ]);
       ?>
     </nav>

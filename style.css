@@ -292,14 +292,24 @@
   text-transform: uppercase;
   text-align: center;
 }
+.site-header .nav {
+  padding: 1rem 0;
+}
 .site-header .nav ul {
   justify-content: center;
+  padding: 0 1rem;
 }
 
 .site-footer {
   position: sticky;
   bottom: 0;
   z-index: 10;
+}
+.site-footer .nav {
+  padding: 1rem 0;
+}
+.site-footer .nav ul li a {
+  padding: 0 1rem;
 }
 .site-footer .current-menu-item a {
   text-transform: uppercase;
@@ -312,6 +322,8 @@
   align-items: center;
   font-size: 1.125rem;
   font-weight: 600;
+  position: relative;
+  overflow: hidden;
 }
 .nav ul {
   list-style: none;
@@ -320,10 +332,59 @@
   display: flex;
   width: 100%;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
+}
+.nav li {
+  flex: 1;
+  position: relative;
 }
 .nav li a {
   text-decoration: none;
   color: #111827;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+.nav li a::before {
+  content: "";
+  position: absolute;
+  top: -1rem;
+  bottom: -1rem;
+  background-size: cover;
+  background-position: center;
+  background-image: var(--hover-bg);
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.1s ease-in-out;
+}
+.nav li a:hover::before {
+  opacity: 0.9;
+}
+.nav li a[data-position=top-center]::before {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50vw;
+}
+.nav li a[data-position=bottom-left]::before {
+  left: 0;
+  width: 33.33vw;
+}
+.nav li a[data-position=bottom-center] {
+  text-align: center;
+}
+.nav li a[data-position=bottom-center]::before {
+  left: 50%;
+  transform: translateX(-50%);
+  width: 33.33vw;
+}
+.nav li a[data-position=bottom-right] {
+  text-align: right;
+}
+.nav li a[data-position=bottom-right]::before {
+  right: 0;
+  width: 33.33vw;
 }
 
 .nav-center {
@@ -332,7 +393,7 @@
 
 .nav-right {
   position: absolute;
-  right: 1rem;
+  right: 0;
   font-size: 0.875rem;
   text-transform: none;
 }

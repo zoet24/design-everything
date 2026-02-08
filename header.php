@@ -18,6 +18,7 @@
           'theme_location' => 'primary',
           'container' => false,
           'menu_class' => 'nav-menu nav-menu--primary',
+          'walker' => new Background_Nav_Walker(),
       ]);
       ?>
     </div>
