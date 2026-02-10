@@ -40,9 +40,40 @@ if ($progress_page) {
 
 
     <main id="site-content" role="main" style="--page-bg-image: url('<?php echo esc_url($intro_background_image['url']); ?>');">
-        <div class="container progress">
-            <div class="progress__grid">
+        <div class="container progresses">
+            <div class="progresses__grid">
+                <?php
+                    $progress = new WP_Query([
+                        'post_type' => 'de_progress',
+                        'posts_per_page' => -1,
+                    ]);
 
+                    if ($progress->have_posts()) :
+                        while ($progress->have_posts()) : $progress->the_post();
+                            $description = get_field('description');
+                            $date = get_field('date');
+                            $image = get_field('progress_image');
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink()); ?>" class="progress">
+                        <div class="progress__content">
+                            <h3 class="progress__name"><?php the_title(); ?></h3>
+                            <p class="progress__description"><?php echo esc_html($description); ?></p>
+                            <p class="progress__date"><?php echo esc_html($date); ?></p>
+                        </div>    
+                    
+                        <?php if ($image) : ?>
+                            <div class="progress__photo">
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                            </div>
+                        <?php endif; ?>
+                    
+                        
+                    </a>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
             </div>
         </div>
     </main>
