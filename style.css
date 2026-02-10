@@ -192,6 +192,7 @@
 .people .person {
   display: flex;
   flex-direction: column;
+  text-decoration: none;
 }
 .people .person__photo {
   width: 100%;
@@ -208,13 +209,32 @@
   font-weight: 400;
   margin: 0.5rem 0;
   text-align: center;
+  color: #111827;
 }
 .people .person:hover {
   text-transform: uppercase;
-  background: #8CA2B7;
+  background-image: var(--page-bg-image);
+  background-size: cover;
+  background-position: center;
 }
 .people .person:hover img {
   transform: scale(0.95, 0.97);
+}
+
+.people-list {
+  column-count: 2;
+  column-gap: 2rem;
+  column-fill: auto;
+  list-style: none;
+  margin-top: 1rem;
+  height: 100%;
+}
+.people-list li a {
+  text-decoration: none;
+  color: #111827;
+}
+.people-list li a:hover {
+  text-decoration: underline;
 }
 
 .home-hero {

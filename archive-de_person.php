@@ -38,7 +38,7 @@ if ($people_page) {
         </div>
     <?php endif; ?>
 
-    <main id="site-content" role="main">
+    <main id="site-content" role="main" style="--page-bg-image: url('<?php echo esc_url($intro_background_image['url']); ?>');">
         <div class="container people">
             <div class="people__grid">
                 <?php
@@ -51,7 +51,7 @@ if ($people_page) {
                     while ($people->have_posts()) : $people->the_post();
                         $image = get_field('profile_image');
                 ?>
-                        <div class="person">
+                        <a href="<?php echo esc_url(get_permalink()); ?>" class="person">
                             <?php if ($image) : ?>
                                 <div class="person__photo">
                                     <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
@@ -61,7 +61,7 @@ if ($people_page) {
                             <div class="person__content">
                                 <h3 class="person__name"><?php the_title(); ?></h3>
                             </div>
-                        </div>
+                        </a>
                 <?php
                     endwhile;
                     wp_reset_postdata();
