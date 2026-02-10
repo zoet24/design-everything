@@ -39,37 +39,35 @@ if ($people_page) {
     <?php endif; ?>
 
     <main id="site-content" role="main">
-        <div class="container">
-            <section class="people-page">
-                <div class="people-grid">
-                    <?php
-                    $people = new WP_Query([
-                        'post_type' => 'de_person',
-                        'posts_per_page' => -1,
-                    ]);
+        <div class="container people">
+            <div class="people__grid">
+                <?php
+                $people = new WP_Query([
+                    'post_type' => 'de_person',
+                    'posts_per_page' => -1,
+                ]);
 
-                    if ($people->have_posts()) :
-                        while ($people->have_posts()) : $people->the_post();
-                            $image = get_field('profile_image');
-                    ?>
-                            <div class="person-card">
-                                <?php if ($image) : ?>
-                                    <div class="person-photo">
-                                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-                                    </div>
-                                <?php endif; ?>
-
-                                <div class="person-content">
-                                    <h3 class="person-name"><?php the_title(); ?></h3>
+                if ($people->have_posts()) :
+                    while ($people->have_posts()) : $people->the_post();
+                        $image = get_field('profile_image');
+                ?>
+                        <div class="person">
+                            <?php if ($image) : ?>
+                                <div class="person__photo">
+                                    <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
                                 </div>
+                            <?php endif; ?>
+
+                            <div class="person__content">
+                                <h3 class="person__name"><?php the_title(); ?></h3>
                             </div>
-                    <?php
-                        endwhile;
-                        wp_reset_postdata();
-                    endif;
-                    ?>
-                </div>
-            </section>
+                        </div>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
         </div>
     </main>
 </div>
