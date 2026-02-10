@@ -7,8 +7,9 @@
   background-size: cover;
   background-position: center;
   z-index: 100;
-  overflow: hidden;
-  
+  overflow-y: auto;
+  overflow-x: hidden;
+    
   // Design Everything
   &[data-origin="top-center"] {
     top: 0;

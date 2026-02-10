@@ -64,11 +64,12 @@
   position: relative;
 }
 .nav li a {
-  text-decoration: none;
-  color: #111827;
   display: block;
   position: relative;
   z-index: 2;
+}
+.nav li a:hover {
+  text-decoration: none;
 }
 .nav li a::before {
   content: "";
@@ -131,11 +132,12 @@
 .text-box-slide {
   position: fixed;
   width: 33.33vw;
-  height: 100vw;
+  height: 100%;
   background-size: cover;
   background-position: center;
   z-index: 100;
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 .text-box-slide[data-origin=top-center] {
   top: 0;
@@ -186,39 +188,8 @@
   grid-column: 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-}
-.people .person {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-}
-.people .person__photo {
-  width: 100%;
-  overflow: hidden;
-}
-.people .person__photo img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-.people .person__name {
-  font-size: 1.125rem;
-  font-weight: 400;
-  margin: 0.5rem 0;
-  text-align: center;
-  color: #111827;
-}
-.people .person:hover {
-  text-transform: uppercase;
-  background-image: var(--page-bg-image);
-  background-size: cover;
-  background-position: center;
-}
-.people .person:hover img {
-  transform: scale(0.95, 0.97);
+  gap: 1rem;
+  padding: 1rem;
 }
 
 .people-list {
@@ -227,14 +198,68 @@
   column-fill: auto;
   list-style: none;
   margin-top: 1rem;
-  height: 100%;
 }
-.people-list li a {
+
+.person {
+  display: flex;
+  flex-direction: column;
   text-decoration: none;
+}
+.person__photo {
+  width: 100%;
+  overflow: hidden;
+}
+.person__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.person__name {
+  font-size: 1.125rem;
+  font-weight: 400;
+  margin: 0.5rem 0;
+  text-align: center;
   color: #111827;
 }
-.people-list li a:hover {
-  text-decoration: underline;
+.person:hover {
+  text-transform: uppercase;
+  background-image: var(--page-bg-image);
+  background-size: cover;
+  background-position: center;
+}
+.person:hover img {
+  transform: scale(0.95, 0.97);
+}
+
+.person-profile__photo {
+  width: 100%;
+  overflow: hidden;
+}
+.person-profile__photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.person-profile__contact {
+  margin-top: 1rem;
+}
+.person-profile__contact a {
+  display: block;
+}
+.person-profile__description {
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.person-post {
+  display: grid;
+  grid-template-columns: 33.33vw 1fr;
+}
+.person-post__content {
+  grid-column: 2;
+  padding: 1rem;
 }
 
 .home-hero {
@@ -274,6 +299,13 @@ body {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+body a {
+  text-decoration: none;
+  color: #111827;
+}
+body a:hover {
+  text-decoration: underline;
 }
 
 .page-content {
