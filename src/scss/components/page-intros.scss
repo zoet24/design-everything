@@ -1,9 +1,9 @@
-@use "variables" as *;
+@use "../variables" as *;
 
 .text-box-slide {
   position: fixed;
-  width: 33%;
-  height: 100%;
+  width: $page-intro-width-bottom;
+  height: $page-intro-height-bottom;
   background-size: cover;
   background-position: center;
   z-index: 100;
@@ -14,8 +14,8 @@
     top: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 50%;
-    height: 75%;
+    width: $page-intro-width-top;
+    height: $page-intro-height-top;
 
     h2 {
       text-align: center;

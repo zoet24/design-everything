@@ -1,15 +1,16 @@
 @use "fonts";
 @use "variables" as *;
-@use "./cpts/people/style.scss" as people;
-@use "./cpts/platform-grid/style.scss" as platform;
-@use "./cpts/progress-grid/style.scss" as progress;
+@use "./components/nav.scss" as nav;
+@use "./components/page-intros.scss" as pageIntros;
+@use "./cpts/people/people-single.scss" as peopleSingle;
+@use "./cpts/people/people.scss" as people;
+@use "./cpts/platform/platform-single.scss" as platformSingle;
+@use "./cpts/platform/platform.scss" as platform;
+@use "./cpts/progress/progress-single.scss" as progressSingle;
+@use "./cpts/progress/progress.scss" as progress;
 @use "./pages/home.scss" as home;
-@use "./pages/single-progress.scss" as singleProgress;
-@use "./pages/single-platform.scss" as singlePlatform;
-@use "./nav";
-@use "./page-intros";
-
-// TOZO - consolidate grid scss into shared functionality (maybe leave current class names on, but add generic classes for shared styling from single source of truth)
+@use "./utility/card.scss" as card;
+@use "./utility/grid.scss" as grid;
 
 * {
   box-sizing: border-box;
@@ -29,24 +30,13 @@ body {
 
 .page-content {
   min-height: 100vh;
-  padding: 60px 0;
 }
 
-// main {
-//   flex: 1;
-
-//   section {
-//     padding-top: $space-container;
-//   }
-
-//   article {
-//     padding-top: $space-container;
-//   }
-
-//   p {
-//     margin-bottom: $space-sm;
-//   }
-// }
+main:not(.home-hero) {
+  padding-top: $header-height;
+  padding-bottom: $footer-height;
+  height: 100%;
+}
 
 // Containers
 .container {
@@ -60,25 +50,4 @@ body {
 .content-narrow {
   max-width: 720px;
   margin-inline: auto;
-}
-
-// About
-.about {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  padding: 2rem 0;
-  height: calc(100% + 2rem);
-
-  div {
-    align-self: center;
-    text-align: center;
-  }
-
-  img {
-    max-height: 640px;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-  }
 }
