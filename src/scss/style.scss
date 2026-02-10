@@ -2,11 +2,8 @@
 @use "variables" as *;
 @use "./components/nav.scss" as nav;
 @use "./components/page-intros.scss" as pageIntros;
-@use "./cpts/people/people-single.scss" as peopleSingle;
 @use "./cpts/people/people.scss" as people;
-@use "./cpts/platform/platform-single.scss" as platformSingle;
 @use "./cpts/platform/platform.scss" as platform;
-@use "./cpts/progress/progress-single.scss" as progressSingle;
 @use "./cpts/progress/progress.scss" as progress;
 @use "./pages/home.scss" as home;
 @use "./utility/card.scss" as card;
@@ -51,4 +48,9 @@ main:not(.home-hero) {
 .container {
   width: 100%;
   height: 100%;
+
+  &--narrow {
+    width: 75%;
+    margin: 0 auto;
+  }
 }

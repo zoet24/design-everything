@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Roobert-Regular";
   src: url("../assets/fonts/Roobert-Regular-Regular.woff2") format("woff2"), url("../assets/fonts/Roobert-Regular-Regular.woff") format("woff"), url("../assets/fonts/Roobert-Regular-Regular.ttf") format("truetype"), url("../assets/fonts/Roobert-Regular-Regular.otf") format("opentype");
@@ -224,6 +225,7 @@
 }
 .person:hover {
   text-transform: uppercase;
+  text-decoration: none;
   background-image: var(--page-bg-image);
   background-size: cover;
   background-position: center;
@@ -290,6 +292,7 @@
 }
 .platforms__grid .platform:hover {
   text-transform: uppercase;
+  text-decoration: none;
   background-image: var(--page-bg-image);
   background-size: cover;
   background-position: center;
@@ -299,6 +302,24 @@
 }
 .platforms__grid .platform:nth-child(even) {
   grid-column: 3;
+}
+
+.platform-list {
+  margin-top: 1rem;
+}
+.platform-list h4 {
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.platform-list ul {
+  list-style: none;
+  padding-left: 14px;
+}
+.platform-list ul li {
+  padding-left: 2px;
+}
+.platform-list ul li::marker {
+  content: "→";
 }
 
 .progress {
@@ -372,6 +393,10 @@ main:not(.home-hero) {
 .container {
   width: 100%;
   height: 100%;
+}
+.container--narrow {
+  width: 75%;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=style.css.map */

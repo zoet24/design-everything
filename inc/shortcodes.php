@@ -29,3 +29,32 @@ function list_all_people_shortcode() {
     return $output;
 }
 add_shortcode('people_list', 'list_all_people_shortcode');
+
+/**
+ * Shortcode to list all platforms
+ */
+function list_all_platform_shortcode() {
+    $platform = new WP_Query([
+        'post_type' => 'de_platform',
+        'posts_per_page' => -1,
+        'post_status' => 'publish',
+    ]);
+
+    if (!$platform->have_posts()) {
+        return '<p>No platforms found.</p>';
+    }
+
+    $output = '<div class="platform-list"><h4>Exhibitions</h4><ul>';
+    
+    while ($platform->have_posts()) {
+        $platform->the_post();
+        $output .= '<li><a href="' . get_permalink() . '">' . get_the_title() . '</a></li>';
+    }
+    
+    $output .= '</ul></div>';
+    
+    wp_reset_postdata();
+    
+    return $output;
+}
+add_shortcode('platform_list', 'list_all_platform_shortcode');
