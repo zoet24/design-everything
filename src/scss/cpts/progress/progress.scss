@@ -1,1 +1,15 @@
 @use "../../variables" as *;
+
+// Progress archive page
+.progress {
+    display: grid;
+    grid-template-columns: 1fr $page-intro-width-bottom;
+
+    &__grid {
+        grid-column: 1;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: $space-md;
+        padding: $space-md;
+    }
+}

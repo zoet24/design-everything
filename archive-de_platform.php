@@ -38,43 +38,36 @@ if ($platform_page) {
         </div>
     <?php endif; ?>
 
-    <main id="site-content" role="main">
-        <div class="container">
-            <section class="platform-page">
+    <main id="site-content" role="main" style="--page-bg-image: url('<?php echo esc_url($intro_background_image['url']); ?>');">
+        <div class="container platforms">
+            <div class="platforms__grid">
+                <?php
+                    $platform = new WP_Query([
+                        'post_type' => 'de_platform',
+                        'posts_per_page' => -1,
+                    ]);
 
-                <?php if (have_posts()) : ?>
-                    <div class="platform-grid">
-                        <?php while (have_posts()) : the_post();
-
-                            // Get ACF fields
-                            $mainImage = get_field('main-image');
-                            $customTitle = get_field('custom-title');
-
-                            // Fallbacks
-                            $title = $customTitle ? esc_html($customTitle) : get_the_title();
-                            ?>
-
-                            <div class="platform-card">
-                                <a href="<?php the_permalink(); ?>" class="platform-link">
-                                    <?php if ($mainImage) : ?>
-                                        <div class="platform-photo">
-                                            <img src="<?php echo esc_url($mainImage['url']); ?>" alt="<?php echo esc_attr($mainImage['alt']); ?>" />
-                                        </div>
-                                    <?php endif; ?>
-
-                                    <div class="platform-content">
-                                        <h3 class="platform-title"><?php echo esc_html($title); ?></h3>
-                                    </div>
-                                </a>
+                    if ($platform->have_posts()) :
+                        while ($platform->have_posts()) : $platform->the_post();
+                            $image = get_field('platform_image');
+                    ?>
+                    <a href="<?php echo esc_url(get_permalink()); ?>" class="platform">
+                        <?php if ($image) : ?>
+                            <div class="platform__photo">
+                                <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
                             </div>
-
-                        <?php endwhile; ?>
-                    </div>
-                <?php else : ?>
-                    <p>No platform items found.</p>
-                <?php endif; ?>
-
-            </section>
+                        <?php endif; ?>
+                    
+                        <div class="platform__content">
+                            <h3 class="platform__name"><?php the_title(); ?></h3>
+                        </div>
+                    </a>
+                <?php
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            </div>
         </div>
     </main>
 </div>
