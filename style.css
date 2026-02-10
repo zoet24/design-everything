@@ -64,6 +64,11 @@
   flex: 1;
   position: relative;
 }
+.nav .current-menu-item > a::before,
+.nav .current-menu-ancestor > a::before,
+.nav .current-menu-parent > a::before {
+  opacity: 0.9;
+}
 .nav li a {
   display: block;
   position: relative;

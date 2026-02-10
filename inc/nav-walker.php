@@ -6,6 +6,30 @@
 class Background_Nav_Walker extends Walker_Nav_Menu {
     function start_el(&$output, $item, $depth = 0, $args = null, $id = 0) {
         $classes = empty($item->classes) ? array() : (array) $item->classes;
+        
+        // Add current classes for archive pages
+        if (is_post_type_archive('de_person') && strpos(strtolower($item->title), 'people') !== false) {
+            $classes[] = 'current-menu-item';
+        } elseif (is_post_type_archive('de_platform') && strpos(strtolower($item->title), 'platform') !== false) {
+            $classes[] = 'current-menu-item';
+        } elseif (is_post_type_archive('de_progress') && strpos(strtolower($item->title), 'progress') !== false) {
+            $classes[] = 'current-menu-item';
+        }
+        
+        // Add current classes for single posts
+        if (is_singular('de_person') && strpos(strtolower($item->title), 'people') !== false) {
+            $classes[] = 'current-menu-ancestor';
+        } elseif (is_singular('de_platform') && strpos(strtolower($item->title), 'platform') !== false) {
+            $classes[] = 'current-menu-ancestor';
+        } elseif (is_singular('de_progress') && strpos(strtolower($item->title), 'progress') !== false) {
+            $classes[] = 'current-menu-ancestor';
+        }
+        
+        // Add current class for home
+        if (is_front_page() && ($item->url === home_url('/') || strpos(strtolower($item->title), 'design everything') !== false)) {
+            $classes[] = 'current-menu-item';
+        }
+        
         $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args, $depth));
         $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
 
