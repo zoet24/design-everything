@@ -9,6 +9,10 @@
 @use "./utility/card.scss" as card;
 @use "./utility/grid.scss" as grid;
 
+:root {
+  --nav-height: #{$nav-height};
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -52,8 +56,8 @@ body {
 }
 
 main:not(.home-hero) {
-  padding-top: $header-height;
-  padding-bottom: $footer-height;
+  padding-top: $nav-height;
+  padding-bottom: $nav-height;
   height: 100%;
 }
 

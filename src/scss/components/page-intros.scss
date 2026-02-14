@@ -29,7 +29,7 @@
   }
   
   &[data-origin="bottom-center"] {
-    top: $header-height;
+    top: $nav-height;
     left: 50%;
     transform: translateX(-50%);
     height: 100%;

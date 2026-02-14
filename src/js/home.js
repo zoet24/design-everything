@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const buildCarousel = () => {
       track.innerHTML = "";
 
-      // Build 3 images: -1, 0 (center), 1
+      // Build 5 images: -2, -1, 0 (center), 1, 2
       [-2, -1, 0, 1, 2].forEach((offset) => {
         const item = document.createElement("div");
         item.className = "carousel__item";
@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         track.appendChild(item);
       });
 
-      // Reset to center position (no transform needed - already centered)
+      // Reset to center position
       track.style.transition = "none";
       track.style.transform = "translateX(0)";
 
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", () => {
       track.offsetHeight;
 
       // Re-enable transitions
-      track.style.transition = "transform 0.5s ease";
+      track.style.transition = "transform 0.5s ease-in-out";
     };
 
     const goToNext = () => {
@@ -44,7 +44,8 @@ document.addEventListener("DOMContentLoaded", () => {
       isAnimating = true;
 
       // Slide left by one image width + gap
-      track.style.transform = "translateX(calc(-1 * (70vw + 2rem)))";
+      track.style.transform =
+        "translateX(calc(-1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
 
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % images.length;
@@ -58,7 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
       isAnimating = true;
 
       // Slide right by one image width + gap
-      track.style.transform = "translateX(calc(1 * (70vw + 2rem)))";
+      track.style.transform =
+        "translateX(calc(1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
 
       setTimeout(() => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
