@@ -17,12 +17,39 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Build 5 images: -2, -1, 0 (center), 1, 2
       [-2, -1, 0, 1, 2].forEach((offset) => {
+        const imageData = images[getIndex(offset)];
         const item = document.createElement("div");
         item.className = "carousel__item";
-        item.style.backgroundImage = `url('${images[getIndex(offset)]}')`;
-
         if (offset === 0) {
           item.classList.add("active");
+        }
+
+        // Create image wrapper instead of setting background on item
+        const imageWrapper = document.createElement("div");
+        imageWrapper.className = "carousel__item-image";
+        imageWrapper.style.backgroundImage = `url('${imageData.url}')`;
+        item.appendChild(imageWrapper);
+
+        // Add info overlay (only for active/center image)
+        if (offset === 0 && (imageData.title || imageData.caption)) {
+          const info = document.createElement("div");
+          info.className = "carousel__info";
+
+          if (imageData.title) {
+            const title = document.createElement("h3");
+            title.className = "carousel__info__title";
+            title.textContent = imageData.title;
+            info.appendChild(title);
+          }
+
+          if (imageData.caption) {
+            const caption = document.createElement("p");
+            caption.className = "carousel__info__caption";
+            caption.textContent = imageData.caption;
+            info.appendChild(caption);
+          }
+
+          item.appendChild(info);
         }
 
         track.appendChild(item);
@@ -43,7 +70,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isAnimating) return;
       isAnimating = true;
 
-      // Slide left by one image width + gap
       track.style.transform =
         "translateX(calc(-1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
 
@@ -58,7 +84,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isAnimating) return;
       isAnimating = true;
 
-      // Slide right by one image width + gap
       track.style.transform =
         "translateX(calc(1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
 
@@ -68,6 +93,13 @@ document.addEventListener("DOMContentLoaded", () => {
         isAnimating = false;
       }, 500);
     };
+
+    // Create overlay divs
+    const leftOverlay = document.createElement("div");
+    leftOverlay.className = "carousel__overlay carousel__overlay--left";
+
+    const rightOverlay = document.createElement("div");
+    rightOverlay.className = "carousel__overlay carousel__overlay--right";
 
     // Create navigation buttons
     const prevButton = document.createElement("button");
@@ -82,6 +114,8 @@ document.addEventListener("DOMContentLoaded", () => {
     nextButton.setAttribute("aria-label", "Next image");
     nextButton.addEventListener("click", goToNext);
 
+    carousel.appendChild(leftOverlay);
+    carousel.appendChild(rightOverlay);
     carousel.appendChild(prevButton);
     carousel.appendChild(nextButton);
 

@@ -50,13 +50,102 @@
   flex-shrink: 0;
   width: calc(100vw - (4 * $nav-height));
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  opacity: 0.3;
-  transition: opacity 0.5s ease-in-out;
+  position: relative;
   
   &.active {
-    opacity: 1;
+    cursor: pointer;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: var(--yellow-paper); // Use CSS variable
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      
+      // Create border frame effect
+      mask: linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                    linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      padding: $frame-thickness-lg $frame-thickness-lg 0;
+    }
+    
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+      
+      .carousel__info {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.carousel__item-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.carousel__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: var(--yellow-paper);
+  background-size: cover;
+  background-position: center;
+  padding: $space-sm;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+  
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-body;
+    margin: 0;
+  }
+  
+  &__caption {
+    font-size: $font-size-sm;
+    margin: 0;
+  }
+}
+
+.carousel__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: $nav-height;
+  background: $colour-nav;
+  opacity: 0.7;
+  pointer-events: all;
+  z-index: 5;
+  
+  &--left {
+    left: 0;
+  }
+  
+  &--right {
+    right: 0;
   }
 }
 
@@ -66,11 +155,11 @@
   transform: translateY(-50%);
   background: none;
   border: none;
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: $colour-text;
   cursor: pointer;
   z-index: 10;
-  padding: 1rem;
+  padding: 2rem;
   transition: opacity 0.2s ease-in-out;
   
   &:hover {
@@ -78,10 +167,10 @@
   }
   
   &--prev {
-    left: 2rem;
+    left: 0;
   }
   
   &--next {
-    right: 2rem;
+    right: 0;
   }
 }

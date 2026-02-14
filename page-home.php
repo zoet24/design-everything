@@ -20,7 +20,11 @@ if ($image_ids) {
         foreach ($ids as $id) {
             $image_url = wp_get_attachment_image_url($id, 'full');
             if ($image_url) {
-                $carousel_images[] = $image_url;
+                $carousel_images[] = [
+                    'url' => $image_url,
+                    'title' => get_the_title($id),
+                    'caption' => wp_get_attachment_caption($id)
+                ];
             }
         }
         
@@ -54,7 +58,7 @@ if ($image_ids) {
         </div>
     <?php endif; ?>
 
-    <main class="home-hero">
+    <main class="home-hero" style="--yellow-paper: url('<?php echo esc_url(get_template_directory_uri() . '/assets/images/papers/yellow.jpg'); ?>');">
         <div class="home-hero__overlay">
             <img
                 src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/de-logo-white.png'); ?>"
