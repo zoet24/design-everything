@@ -6,7 +6,7 @@
     grid-template-columns: $page-intro-width-bottom 1fr;
 
     // Single column on mobile
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: $breakpoint-sm) {
         display: flex;
         flex-direction: column;
     }
@@ -18,10 +18,14 @@
         gap: $space-md;
         padding: $space-md;
 
-        @media (max-width: $breakpoint-md) {
+        @media (max-width: $breakpoint-sm) {
             display: flex;
             flex-direction: column;
             padding-top: 0;
+        }
+
+        @media (max-width: $breakpoint-md) {
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 }
@@ -109,6 +113,15 @@
 
 // Single person CPT page: Person description
 .person-profile {
+    &__link {
+        // Single column on mobile
+        @media (max-width: $breakpoint-md) {
+            display: none !important;
+        }
+
+        display: block;
+    }
+
     &__photo {
         width: 100%;
         overflow: hidden;

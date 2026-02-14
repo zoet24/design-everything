@@ -6,7 +6,7 @@
     grid-template-columns: 1fr $page-intro-width-bottom;
 
     // Single column on mobile
-    @media (max-width: $breakpoint-md) {
+    @media (max-width: $breakpoint-sm) {
         display: flex;
         flex-direction: column;
     }
@@ -18,7 +18,7 @@
         gap: $space-md;
         padding: $space-md;
 
-        @media (max-width: $breakpoint-md) {
+        @media (max-width: $breakpoint-sm) {
             display: flex;
             flex-direction: column;
             padding-top: 0;

@@ -181,7 +181,7 @@
   z-index: 100;
   overflow: hidden;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .text-box-slide {
     position: static;
     width: auto !important;
@@ -242,9 +242,8 @@
   z-index: 2;
   display: flex;
   flex-direction: column;
-  max-height: calc(75vw - 2rem);
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .text-box-content {
     max-height: 100% !important;
   }
@@ -256,8 +255,11 @@
   text-transform: uppercase;
   flex-shrink: 0;
   height: 53.5px;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .text-box-content h2 {
     height: auto !important;
     padding: 1rem;
@@ -292,7 +294,7 @@
   display: grid;
   grid-template-columns: 33.33vw 1fr;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .people {
     display: flex;
     flex-direction: column;
@@ -305,11 +307,16 @@
   gap: 1rem;
   padding: 1rem;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .people__grid {
     display: flex;
     flex-direction: column;
     padding-top: 0;
+  }
+}
+@media (max-width: 768px) {
+  .people__grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -383,6 +390,14 @@
   padding: 16px 16px 0;
 }
 
+@media (max-width: 768px) {
+  .person-profile__link {
+    display: none !important;
+  }
+}
+.person-profile__link {
+  display: block;
+}
 .person-profile__photo {
   width: 100%;
   overflow: hidden;
@@ -419,7 +434,7 @@
   gap: 1rem;
   padding: 1rem;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .platforms__grid {
     display: flex;
     flex-direction: column;
@@ -488,7 +503,7 @@
   display: grid;
   grid-template-columns: 1fr 33.33vw;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .progresses {
     display: flex;
     flex-direction: column;
@@ -501,7 +516,7 @@
   gap: 1rem;
   padding: 1rem;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   .progresses__grid {
     display: flex;
     flex-direction: column;
@@ -823,7 +838,7 @@ main:not(.home-hero) {
   padding-bottom: 53.5px;
   height: 100%;
 }
-@media (max-width: 768px) {
+@media (max-width: 600px) {
   main:not(.home-hero) {
     padding-top: 0 !important;
     height: auto;

@@ -32,7 +32,7 @@ if ($people_page) {
             data-origin="bottom-left"
         >
             <div class="text-box-content person-profile">
-                <h2><a href="/people">People</a> / <?php echo esc_html(get_the_title()); ?></h2>
+                <h2><span class="person-profile__link"><a href="/people">People</a>&nbsp;/&nbsp;</span><?php echo esc_html(get_the_title()); ?></h2>
                 <div class="text-box-post">
                     <?php if ($person_profile) : ?>
                         <div class="person-profile__photo">

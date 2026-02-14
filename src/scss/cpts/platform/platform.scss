@@ -9,7 +9,7 @@
         padding: $space-md;
 
         // Single column on mobile
-        @media (max-width: $breakpoint-md) {
+        @media (max-width: $breakpoint-sm) {
             display: flex;
             flex-direction: column;
             padding-top: 0;

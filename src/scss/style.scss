@@ -61,7 +61,7 @@ main:not(.home-hero) {
   height: 100%;
 
   // Mobile
-  @media (max-width: $breakpoint-md) {
+  @media (max-width: $breakpoint-sm) {
     padding-top: 0 !important;
     height: auto;
   }
