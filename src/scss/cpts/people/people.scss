@@ -5,22 +5,38 @@
     display: grid;
     grid-template-columns: $page-intro-width-bottom 1fr;
 
+    // Single column on mobile
+    @media (max-width: $breakpoint-md) {
+        display: flex;
+        flex-direction: column;
+    }
+
     &__grid {
         grid-column: 2;
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: $space-md;
         padding: $space-md;
+
+        @media (max-width: $breakpoint-md) {
+            display: flex;
+            flex-direction: column;
+            padding-top: 0;
+        }
     }
 }
 
 // People archive page: Shortcode list of all people CPTs
 .people-list {
-    column-count: 2; // TOZO: MQs, 1 column on sm + md
+    column-count: 2;
     column-gap: 2rem;
     column-fill: auto;
     list-style: none;
     margin-top: $space-md;
+
+    @media (max-width: $breakpoint-md) {
+        column-count: 1;
+    }
 
     a:hover {
         text-transform: uppercase;

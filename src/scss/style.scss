@@ -59,6 +59,12 @@ main:not(.home-hero) {
   padding-top: $nav-height;
   padding-bottom: $nav-height;
   height: 100%;
+
+  // Mobile
+  @media (max-width: $breakpoint-md) {
+    padding-top: 0 !important;
+    height: auto;
+  }
 }
 
 // Containers

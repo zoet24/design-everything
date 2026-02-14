@@ -8,6 +8,17 @@
   z-index: 100;
   overflow: hidden;
 
+   // Mobile
+   @media (max-width: $breakpoint-md) {
+    position: static;
+    width: auto !important;
+    height: auto !important;
+    max-height: 100% !important;
+    transform: none !important;
+    margin: $space-md;
+    margin-top: calc($nav-height + $space-md);
+  }
+
   &[data-origin="top-center"] {
     top: 0;
     left: 50%;
@@ -67,6 +78,11 @@
   flex-direction: column;
   max-height: calc($page-intro-height-top - #{$space-md * 2});
 
+  // Mobile
+  @media (max-width: $breakpoint-md) {
+    max-height: 100% !important;
+  }
+
   h2 {
     font-family: $font-body;
     font-weight: 600;
@@ -74,6 +90,13 @@
     text-transform: uppercase;
     flex-shrink: 0;
     height: $nav-height;
+
+    // Mobile
+    @media (max-width: $breakpoint-md) {
+      height: auto !important;
+      padding: $space-md;
+      text-align: left !important;
+    }
   }
 }
 
