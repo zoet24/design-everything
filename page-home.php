@@ -9,16 +9,28 @@ $intro_background_image = get_field('page_background_image');
 $intro_title = get_field('page_intro_title');
 $intro_post = get_field('page_intro_text');
 
-// Get random hero background image
-$background_image = '';
+// Get all hero images for carousel
 $image_ids = get_field('hero_image_ids');
+$carousel_images = [];
 
 if ($image_ids) {
     $ids = array_filter(array_map('trim', explode(',', $image_ids)));
     
     if (!empty($ids)) {
-        $random_id = $ids[array_rand($ids)];
-        $background_image = wp_get_attachment_image_url($random_id, 'full');
+        foreach ($ids as $id) {
+            $image_url = wp_get_attachment_image_url($id, 'full');
+            if ($image_url) {
+                $carousel_images[] = $image_url;
+            }
+        }
+        
+        // Ensure at least 5 images by duplicating if needed
+        while (count($carousel_images) < 5) {
+            $carousel_images = array_merge($carousel_images, $carousel_images);
+        }
+        
+        // Shuffle and pick random starting point
+        shuffle($carousel_images);
     }
 }
 ?>
@@ -42,7 +54,7 @@ if ($image_ids) {
         </div>
     <?php endif; ?>
 
-    <main class="home-hero" style="background-image: url('<?php echo esc_url($background_image); ?>');">
+    <main class="home-hero">
         <div class="home-hero__overlay">
             <img
                 src="<?php echo esc_url(get_template_directory_uri() . '/assets/images/de-logo-white.png'); ?>"
@@ -50,6 +62,12 @@ if ($image_ids) {
                 class="home-hero__logo"
             />
         </div>
+        
+        <?php if (!empty($carousel_images)): ?>
+            <div class="carousel" data-images='<?php echo json_encode(array_values($carousel_images)); ?>'>
+                <div class="carousel__track"></div>
+            </div>
+        <?php endif; ?>
     </main>
 </div>
 

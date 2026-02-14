@@ -37,14 +37,6 @@ body {
     font-size: $font-size-lg;
   }
 
-  h4 {
-    
-  }
-
-  p {
-
-  }
-
   a {
     text-decoration: none;
     color: $colour-text;
@@ -73,6 +65,7 @@ main:not(.home-hero) {
   &--narrow {
     width: 75%;
     margin: 0 auto;
+    padding: $space-md 0;
   }
 }
 

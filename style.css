@@ -468,7 +468,7 @@
   margin: 0 0 0.5rem 0;
 }
 .progress__description {
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.5rem 0;
 }
 .progress__date {
   margin: 0;
@@ -503,12 +503,12 @@
 .home-hero {
   height: 100vh;
   width: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: #f2f2f2;
 }
 
 .home-hero__overlay {
@@ -516,11 +516,69 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
 }
 
 .home-hero__logo {
   max-width: 200px;
   width: 40%;
+}
+
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel__track {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  transition: transform 0.5s ease;
+}
+
+.carousel__item {
+  flex-shrink: 0;
+  width: 70vw;
+  height: 70vh;
+  background-size: cover;
+  background-position: center;
+  opacity: 0.3;
+  transition: opacity 0.5s ease;
+}
+.carousel__item.active {
+  opacity: 1;
+}
+
+.carousel__nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 3rem;
+  color: #111827;
+  cursor: pointer;
+  z-index: 10;
+  padding: 1rem;
+  transition: opacity 0.2s ease;
+}
+.carousel__nav:hover {
+  opacity: 0.7;
+}
+.carousel__nav--prev {
+  left: 2rem;
+}
+.carousel__nav--next {
+  right: 2rem;
 }
 
 * {
@@ -573,6 +631,7 @@ main:not(.home-hero) {
 .container--narrow {
   width: 75%;
   margin: 0 auto;
+  padding: 1rem 0;
 }
 
 .shortcode-list {
