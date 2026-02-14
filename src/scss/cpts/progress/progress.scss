@@ -16,15 +16,29 @@
 
 .progress {
     display: grid;
-    grid-template-columns: 1fr 1fr; // Content | Image
+    grid-template-columns: 1fr 1fr;
     gap: $space-md;
     text-decoration: none;
     color: inherit;
+    position: relative;
+    
+    // Invisible border for layout
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 8px solid transparent;
+        pointer-events: none;
+        opacity: 0;
+    }
     
     &__content {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        padding: calc(6px + $space-md);
     }
     
     &__name {
@@ -55,14 +69,22 @@
     }
     
     &:hover {
-        background-image: var(--page-bg-image);
-        background-size: cover;
-        background-position: center;
         text-decoration: none;
         
-        img {
-            transform: scale(0.95);
-            transition: transform 0.2s ease;
+        &::before {
+            opacity: 1;
+            background-image: var(--page-bg-image);
+            background-size: cover;
+            background-position: center;
+            border: 6px solid transparent; // Creates the border "frame"
+            // Use mask to only show the border
+            mask: linear-gradient(#fff 0 0) content-box, 
+                  linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                          linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            padding: 8px;
         }
     }
 }
