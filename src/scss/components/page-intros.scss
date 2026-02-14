@@ -3,47 +3,60 @@
 .text-box-slide {
   position: fixed;
   width: $page-intro-width-bottom;
-  height: $page-intro-height-bottom;
   background-size: cover;
   background-position: center;
   z-index: 100;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 
-  // Design Everything
   &[data-origin="top-center"] {
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: $page-intro-width-top;
-    height: $page-intro-height-top;
+    max-height: $page-intro-height-top;
+    height: auto;
+    transition: max-height 0.3s ease;
 
     h2 {
       text-align: center;
     }
   }
   
-  // People
   &[data-origin="bottom-left"] {
     top: 0;
     left: 0;
+    height: 100%;
   }
   
-  // Platform
   &[data-origin="bottom-center"] {
     top: $header-height;
     left: 50%;
     transform: translateX(-50%);
+    height: 100%;
 
     h2 {
       text-align: center;
     }
   }
   
-  // Progress
   &[data-origin="bottom-right"] {
     top: 0;
     right: 0;
+    height: 100%;
+  }
+}
+
+.text-box-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  
+  .chevron {
+    margin-left: $space-sm;
+    transition: transform 0.3s ease;
+    display: inline-block;
   }
 }
 
@@ -51,13 +64,31 @@
   position: relative;
   z-index: 2;
   padding: $space-md;
-  height: 100%;
 
   h2 {
     font-family: $font-body;
     font-weight: 600;
     font-size: $font-size-lg;
     text-transform: uppercase;
-    padding-bottom: $space-md;
+  }
+}
+
+.text-box-post {
+  max-height: 1000px;
+  overflow: auto;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+  opacity: 1;
+  margin: $space-md 0;
+}
+
+.text-box-slide--toggleable.closed {
+  .text-box-post {
+    max-height: 0;
+    opacity: 0;
+    margin: 0;
+  }
+  
+  .chevron {
+    transform: rotate(-180deg);
   }
 }

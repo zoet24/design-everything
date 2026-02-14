@@ -6,7 +6,7 @@
 function theme_enqueue_scripts() {
     wp_enqueue_script(
         'page-intro',
-        get_template_directory_uri() . '/src/js/page-intro.js',
+        get_template_directory_uri() . '/src/js/page-intros.js',
         array(),
         '1.0.0',
         true

@@ -33,26 +33,28 @@ if ($people_page) {
         >
             <div class="text-box-content person-profile">
                 <h2><a href="/people">People</a> / <?php echo esc_html(get_the_title()); ?></h2>
-                <?php if ($person_profile) : ?>
-                    <div class="person-profile__photo">
-                        <img src="<?php echo esc_url($person_profile['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
-                    </div>
-                <?php endif; ?>
-                <div class="person-profile__contact">
-                    <a href="mailto:<?php echo antispambot(esc_attr($person_email)); ?>">
-                        <?php echo esc_html($person_email); ?>
-                    </a>
-                    <?php if ($person_insta): ?>
-                        <a href="https://instagram.com/<?php echo esc_attr($person_insta); ?>" target="_blank" rel="noopener">
-                            @<?php echo esc_html($person_insta); ?>
-                        </a>
+                <div class="text-box-post">
+                    <?php if ($person_profile) : ?>
+                        <div class="person-profile__photo">
+                            <img src="<?php echo esc_url($person_profile['url']); ?>" alt="<?php echo esc_attr($image['alt']); ?>" />
+                        </div>
                     <?php endif; ?>
-                    <a href="<?php echo esc_url($person_website); ?>" target="_blank" rel="noopener">
-                        <?php echo esc_html($person_website); ?>
-                    </a>
-                </div>
-                <div class="person-profile__description">
-                    <p><?php echo esc_html($person_description); ?></p>
+                    <div class="person-profile__contact">
+                        <a href="mailto:<?php echo antispambot(esc_attr($person_email)); ?>">
+                            <?php echo esc_html($person_email); ?>
+                        </a>
+                        <?php if ($person_insta): ?>
+                            <a href="https://instagram.com/<?php echo esc_attr($person_insta); ?>" target="_blank" rel="noopener">
+                                @<?php echo esc_html($person_insta); ?>
+                            </a>
+                        <?php endif; ?>
+                        <a href="<?php echo esc_url($person_website); ?>" target="_blank" rel="noopener">
+                            <?php echo esc_html($person_website); ?>
+                        </a>
+                    </div>
+                    <div class="person-profile__description">
+                        <p><?php echo esc_html($person_description); ?></p>
+                    </div>
                 </div>
             </div>
         </div>

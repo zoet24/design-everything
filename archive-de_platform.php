@@ -29,11 +29,13 @@ if ($platform_page) {
         >
             <div class="text-box-content">
                 <h2><?php echo esc_html($intro_title); ?></h2>
-                <?php 
-                    if ($intro_post) {
-                        echo apply_filters('the_content', $intro_post->post_content);
-                    }
-                ?>
+                <div class="text-box-post">
+                    <?php 
+                        if ($intro_post) {
+                            echo apply_filters('the_content', $intro_post->post_content);
+                        }
+                    ?>
+                </div>
             </div>
         </div>
     <?php endif; ?>

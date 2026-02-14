@@ -139,6 +139,22 @@
 }
 
 // Other, Insta, Shop
+.nav-left {
+  position: absolute;
+  left: 0;
+
+  font-size: $font-size-sm;
+  text-transform: none;
+
+  li {
+    margin-left: $space-sm;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 .nav-right {
   position: absolute;
   right: 0;

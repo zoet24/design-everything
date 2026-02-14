@@ -2,19 +2,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const textBox = document.querySelector(".text-box-slide");
 
   if (textBox) {
-    // Trigger slide in after a short delay
+    // Existing slide in animation
     setTimeout(() => {
       textBox.classList.add("slide-in");
     }, 100);
+  }
 
-    // Optional: Click anywhere to dismiss
-    textBox.addEventListener("click", () => {
-      textBox.style.animation = "none";
-      textBox.style.transform = textBox
-        .getAttribute("data-origin")
-        .includes("top")
-        ? "translate(-50%, -100%)"
-        : "translateY(100%)";
+  // Toggle functionality for home page
+  const toggle = document.querySelector(".text-box-toggle");
+  const toggleableBox = document.querySelector(".text-box-slide--toggleable");
+
+  if (toggle && toggleableBox) {
+    toggle.addEventListener("click", () => {
+      toggleableBox.classList.toggle("closed");
     });
   }
 });

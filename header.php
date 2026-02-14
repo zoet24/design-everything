@@ -23,7 +23,12 @@
       ?>
     </div>
 
-    <div class="nav-right">
+    <?php 
+    // Check if on progress page or single progress post
+    $nav_class = (is_post_type_archive('de_progress')) ? 'nav-left' : 'nav-right';
+    ?>
+
+    <div class="<?php echo esc_attr($nav_class); ?>">
       <?php
       wp_nav_menu([
           'theme_location' => 'header_secondary',

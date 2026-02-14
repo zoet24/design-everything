@@ -95,7 +95,7 @@
 .nav li a[data-position=top-center]::before {
   left: 50%;
   transform: translateX(-50%);
-  width: 50vw;
+  width: 60vw;
 }
 .nav li a[data-position=bottom-left]::before {
   left: 0;
@@ -121,6 +121,19 @@
   margin: 0 auto;
 }
 
+.nav-left {
+  position: absolute;
+  left: 0;
+  font-size: 0.875rem;
+  text-transform: none;
+}
+.nav-left li {
+  margin-left: 0.5rem;
+}
+.nav-left li:hover {
+  text-decoration: underline;
+}
+
 .nav-right {
   position: absolute;
   right: 0;
@@ -137,19 +150,19 @@
 .text-box-slide {
   position: fixed;
   width: 33.33vw;
-  height: 100%;
   background-size: cover;
   background-position: center;
   z-index: 100;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 .text-box-slide[data-origin=top-center] {
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 50vw;
-  height: 75vw;
+  width: 60vw;
+  max-height: 75vw;
+  height: auto;
+  transition: max-height 0.3s ease;
 }
 .text-box-slide[data-origin=top-center] h2 {
   text-align: center;
@@ -157,11 +170,13 @@
 .text-box-slide[data-origin=bottom-left] {
   top: 0;
   left: 0;
+  height: 100%;
 }
 .text-box-slide[data-origin=bottom-center] {
   top: 53.5px;
   left: 50%;
   transform: translateX(-50%);
+  height: 100%;
 }
 .text-box-slide[data-origin=bottom-center] h2 {
   text-align: center;
@@ -169,20 +184,49 @@
 .text-box-slide[data-origin=bottom-right] {
   top: 0;
   right: 0;
+  height: 100%;
+}
+
+.text-box-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+.text-box-toggle .chevron {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
 }
 
 .text-box-content {
   position: relative;
   z-index: 2;
   padding: 1rem;
-  height: 100%;
 }
 .text-box-content h2 {
   font-family: "Roobert-Regular", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 600;
   font-size: 1.125rem;
   text-transform: uppercase;
-  padding-bottom: 1rem;
+}
+
+.text-box-post {
+  max-height: 1000px;
+  overflow: auto;
+  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+  opacity: 1;
+  margin: 1rem 0;
+}
+
+.text-box-slide--toggleable.closed .text-box-post {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+}
+.text-box-slide--toggleable.closed .chevron {
+  transform: rotate(-180deg);
 }
 
 .people {
