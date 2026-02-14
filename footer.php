@@ -4,7 +4,7 @@
  */
 ?>
 
-<footer class="site-footer">
+<footer class="site-footer <?php if (is_page_template('page-home.php')) echo 'home-loading'; ?>">
   <?php if (has_nav_menu('footer')) : ?>
     <nav class="nav">
       <?php

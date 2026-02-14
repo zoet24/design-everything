@@ -39,10 +39,10 @@ if ($image_ids) {
 }
 ?>
 
-<div class="page-content" data-nav-position="top-center">
+<div class="page-content home-loading" data-nav-position="top-center">
     <?php if ($intro_background_image && $intro_post): ?>
         <div 
-            class="text-box-slide text-box-slide--toggleable" 
+            class="text-box-slide text-box-slide--toggleable text-box-slide--home-loading closed" 
             style="background-image: url('<?php echo esc_url($intro_background_image['url']); ?>');"
             data-origin="top-center"
         >
@@ -68,7 +68,7 @@ if ($image_ids) {
         </div>
         
         <?php if (!empty($carousel_images)): ?>
-            <div class="carousel" data-images='<?php echo json_encode(array_values($carousel_images)); ?>'>
+            <div class="carousel home-loading-carousel" data-images='<?php echo json_encode(array_values($carousel_images)); ?>'>
                 <div class="carousel__track"></div>
             </div>
         <?php endif; ?>

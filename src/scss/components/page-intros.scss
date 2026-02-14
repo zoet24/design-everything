@@ -63,22 +63,29 @@
 .text-box-content {
   position: relative;
   z-index: 2;
-  padding: $space-md;
+  display: flex;
+  flex-direction: column;
+  max-height: calc($page-intro-height-top - #{$space-md * 2});
 
   h2 {
     font-family: $font-body;
     font-weight: 600;
     font-size: $font-size-lg;
     text-transform: uppercase;
+    flex-shrink: 0;
+    height: $nav-height;
   }
 }
 
 .text-box-post {
-  max-height: 1000px;
-  overflow: auto;
-  transition: max-height 0.3s ease, opacity 0.3s ease, margin 0.3s ease;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: max-height 1s ease, opacity 0.3s ease, padding 0.3s ease;
   opacity: 1;
-  margin: $space-md 0;
+  flex: 1;
+  min-height: 0;
+  padding: 0 $space-md $space-md;
+  max-height: 1000px;
 }
 
 .text-box-slide--toggleable.closed {
@@ -86,6 +93,9 @@
     max-height: 0;
     opacity: 0;
     margin: 0;
+    overflow: hidden;
+    padding-bottom: 0;
+    transition: max-height 0.4s ease, opacity 0.2s ease, padding 0.2s ease;
   }
   
   .chevron {
