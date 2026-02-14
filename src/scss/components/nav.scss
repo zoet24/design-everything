@@ -41,7 +41,7 @@
 
 .nav {
   padding: $space-md;
-  background: $colour-bg;
+  background: $colour-nav;
   display: flex;
   align-items: center;
   font-size: $font-size-lg;
@@ -63,12 +63,6 @@
   li {
     flex: 1;
     position: relative;
-  }
-
-  .current-menu-item > a::before,
-  .current-menu-ancestor > a::before,
-  .current-menu-parent > a::before {
-    opacity: 0.9;
   }
 
   li a {
@@ -104,69 +98,102 @@
       width: $page-intro-width-top;
     }
     
-    // People (footer left third)
+    // People (footer left)
     &[data-position="bottom-left"]::before {
       left: 0;
       width: $page-intro-width-bottom;
     }
     
-    // Platform (footer center third)
+    // Platform (footer center)
     &[data-position="bottom-center"] {
       text-align: center;
-    }
-
-    &[data-position="bottom-center"]::before {
-      left: 50%;
-      transform: translateX(-50%);
-      width: $page-intro-width-bottom;
+      
+      &::before {
+        left: 50%;
+        transform: translateX(-50%);
+        width: $page-intro-width-bottom;
+      }
     }
     
-    // Progress (footer right third)
+    // Progress (footer right)
     &[data-position="bottom-right"] {
       text-align: right;
-    }
-
-    &[data-position="bottom-right"]::before {
-      right: 0;
-      width: $page-intro-width-bottom;
+      
+      &::before {
+        right: 0;
+        width: $page-intro-width-bottom;
+      }
     }
   }
 }
 
-// Design Everything
+// Active menu states
+.current-menu-item > a::before,
+.current-menu-ancestor > a::before,
+.current-menu-parent > a::before {
+  opacity: 0.9;
+}
+
+// Design Everything nav
 .nav-center {
   margin: 0 auto;
 }
 
-// Other, Insta, Shop
-.nav-left {
+// Secondary nav (Other, Insta, Shop)
+.nav-left,
+.nav-right {
   position: absolute;
-  left: 0;
-
   font-size: $font-size-sm;
   text-transform: none;
 
-  li {
-    margin-left: $space-sm;
+  li:hover {
+    text-decoration: underline;
+  }
+}
 
-    &:hover {
-      text-decoration: underline;
-    }
+.nav-left {
+  left: 0;
+  
+  li {
+    margin-right: $space-sm;
+  }
+  
+  &.animate-in {
+    animation: slideInFromLeft 0.3s ease-out;
   }
 }
 
 .nav-right {
-  position: absolute;
   right: 0;
-
-  font-size: $font-size-sm;
-  text-transform: none;
-
+  
   li {
     margin-left: $space-sm;
+  }
+  
+  &.animate-in {
+    animation: slideInFromRight 0.3s ease-out;
+  }
+}
 
-    &:hover {
-      text-decoration: underline;
-    }
+// Animations
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 }

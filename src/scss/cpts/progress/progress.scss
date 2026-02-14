@@ -30,7 +30,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        border: 8px solid transparent;
+        border: $frame-thickness solid transparent;
         pointer-events: none;
         opacity: 0;
     }
@@ -38,7 +38,7 @@
     &__content {
         display: flex;
         flex-direction: column;
-        padding: calc(6px + $space-md);
+        padding: calc($frame-thickness + $space-md);
     }
     
     &__name {
@@ -76,7 +76,7 @@
             background-image: var(--page-bg-image);
             background-size: cover;
             background-position: center;
-            border: 6px solid transparent; // Creates the border "frame"
+            border: $frame-thickness solid transparent; // Creates the border "frame"
             // Use mask to only show the border
             mask: linear-gradient(#fff 0 0) content-box, 
                   linear-gradient(#fff 0 0);
@@ -84,7 +84,7 @@
             -webkit-mask: linear-gradient(#fff 0 0) content-box, 
                           linear-gradient(#fff 0 0);
             -webkit-mask-composite: xor;
-            padding: 8px;
+            padding: $frame-thickness;
         }
     }
 }

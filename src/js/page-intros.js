@@ -17,4 +17,29 @@ document.addEventListener("DOMContentLoaded", () => {
       toggleableBox.classList.toggle("closed");
     });
   }
+
+  // Sliding animation for other links
+  const navElement = document.querySelector("[data-nav-position]");
+
+  if (navElement) {
+    const currentPosition = navElement.getAttribute("data-nav-position");
+    const previousPosition = sessionStorage.getItem("navPosition");
+
+    // Only animate if position changed
+    if (previousPosition && previousPosition !== currentPosition) {
+      navElement.classList.add("animate-in");
+
+      // Remove animation class after it completes
+      navElement.addEventListener(
+        "animationend",
+        () => {
+          navElement.classList.remove("animate-in");
+        },
+        { once: true }
+      );
+    }
+
+    // Store current position for next page
+    sessionStorage.setItem("navPosition", currentPosition);
+  }
 });

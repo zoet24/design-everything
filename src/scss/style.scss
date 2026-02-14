@@ -18,11 +18,32 @@
 body {
   font-family: $font-body;
   font-weight: $font-weight-body;
+  font-size: $font-size-base;
   color: $colour-text;
-  background-color: $colour-background;
+  background-color: $colour-bg;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+
+  h1 {
+    font-size: $font-size-xxl;
+  }
+
+  h2 {
+    font-size: $font-size-xl;
+  }
+
+  h3 {
+    font-size: $font-size-lg;
+  }
+
+  h4 {
+    
+  }
+
+  p {
+
+  }
 
   a {
     text-decoration: none;

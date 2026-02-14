@@ -64,11 +64,6 @@
   flex: 1;
   position: relative;
 }
-.nav .current-menu-item > a::before,
-.nav .current-menu-ancestor > a::before,
-.nav .current-menu-parent > a::before {
-  opacity: 0.9;
-}
 .nav li a {
   display: block;
   position: relative;
@@ -117,36 +112,67 @@
   width: 33.33vw;
 }
 
+.current-menu-item > a::before,
+.current-menu-ancestor > a::before,
+.current-menu-parent > a::before {
+  opacity: 0.9;
+}
+
 .nav-center {
   margin: 0 auto;
 }
 
-.nav-left {
-  position: absolute;
-  left: 0;
-  font-size: 0.875rem;
-  text-transform: none;
-}
-.nav-left li {
-  margin-left: 0.5rem;
-}
-.nav-left li:hover {
-  text-decoration: underline;
-}
-
+.nav-left,
 .nav-right {
   position: absolute;
-  right: 0;
   font-size: 0.875rem;
   text-transform: none;
 }
-.nav-right li {
-  margin-left: 0.5rem;
-}
+.nav-left li:hover,
 .nav-right li:hover {
   text-decoration: underline;
 }
 
+.nav-left {
+  left: 0;
+}
+.nav-left li {
+  margin-right: 0.5rem;
+}
+.nav-left.animate-in {
+  animation: slideInFromLeft 0.3s ease-out;
+}
+
+.nav-right {
+  right: 0;
+}
+.nav-right li {
+  margin-left: 0.5rem;
+}
+.nav-right.animate-in {
+  animation: slideInFromRight 0.3s ease-out;
+}
+
+@keyframes slideInFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 .text-box-slide {
   position: fixed;
   width: 33.33vw;
@@ -303,7 +329,7 @@
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-  padding: 8px;
+  padding: 16px 16px 0;
 }
 
 .person-profile__photo {
@@ -394,7 +420,7 @@
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
-  padding: 8px;
+  padding: 16px 16px 0;
 }
 .platforms__grid .platform:nth-child(even) {
   grid-column: 3;
@@ -434,7 +460,7 @@
 .progress__content {
   display: flex;
   flex-direction: column;
-  padding: calc(6px + 1rem);
+  padding: calc(8px + 1rem);
 }
 .progress__name {
   font-size: 1.125rem;
@@ -466,7 +492,7 @@
   background-image: var(--page-bg-image);
   background-size: cover;
   background-position: center;
-  border: 6px solid transparent;
+  border: 8px solid transparent;
   mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   mask-composite: exclude;
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
@@ -506,11 +532,21 @@
 body {
   font-family: "Roobert-Regular", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 400;
+  font-size: 16px;
   color: #111827;
   background-color: #f2f2f2;
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
+}
+body h1 {
+  font-size: 2.25rem;
+}
+body h2 {
+  font-size: 1.5rem;
+}
+body h3 {
+  font-size: 1.125rem;
 }
 body a {
   text-decoration: none;

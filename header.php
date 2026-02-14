@@ -24,18 +24,19 @@
     </div>
 
     <?php 
-    // Check if on progress page or single progress post
-    $nav_class = (is_post_type_archive('de_progress')) ? 'nav-left' : 'nav-right';
-    ?>
-
-    <div class="<?php echo esc_attr($nav_class); ?>">
-      <?php
-      wp_nav_menu([
-          'theme_location' => 'header_secondary',
-          'container' => false,
-          'menu_class' => 'nav-menu nav-menu--secondary',
-      ]);
+      // Check if on progress page or single progress post
+      $nav_class = (is_post_type_archive('de_progress')) ? 'nav-left' : 'nav-right';
+      $nav_position = (is_post_type_archive('de_progress')) ? 'left' : 'right';
       ?>
+
+      <div class="<?php echo esc_attr($nav_class); ?>" data-nav-position="<?php echo esc_attr($nav_position); ?>">
+        <?php
+        wp_nav_menu([
+            'theme_location' => 'header_secondary',
+            'container' => false,
+            'menu_class' => 'nav-menu nav-menu--secondary',
+        ]);
+        ?>
     </div>
   </nav>
 </header>
