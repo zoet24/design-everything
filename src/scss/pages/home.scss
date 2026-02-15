@@ -270,3 +270,22 @@ body[data-home-loading="true"] {
     }
   }
 }
+
+.carousel__item-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--yellow-paper);
+  background-size: cover;
+  background-position: center;
+  padding: $space-md;
+  overflow-y: auto;
+  z-index: 0;
+  
+  // Only on mobile
+  @media (min-width: calc($breakpoint-sm + 1px)) {
+    display: none;
+  }
+}

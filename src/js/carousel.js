@@ -2,10 +2,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const carousel = document.querySelector(".carousel");
 
   if (carousel) {
-    const images = JSON.parse(carousel.getAttribute("data-images"));
+    let images = JSON.parse(carousel.getAttribute("data-images"));
+    const introContent = carousel.getAttribute("data-intro-content");
     const track = carousel.querySelector(".carousel__track");
+    const isMobile = window.innerWidth <= 480;
 
-    let currentIndex = Math.floor(Math.random() * images.length);
+    // On mobile, insert intro content as first slide
+    if (isMobile && introContent) {
+      images.unshift({
+        url: null, // No background image
+        title: null,
+        caption: null,
+        isIntro: true,
+        content: introContent,
+      });
+    }
+
+    let currentIndex = isMobile ? 0 : Math.floor(Math.random() * images.length); // Start at intro on mobile
     let isAnimating = false;
 
     const getIndex = (offset) => {
@@ -24,32 +37,41 @@ document.addEventListener("DOMContentLoaded", () => {
           item.classList.add("active");
         }
 
-        // Create image wrapper instead of setting background on item
-        const imageWrapper = document.createElement("div");
-        imageWrapper.className = "carousel__item-image";
-        imageWrapper.style.backgroundImage = `url('${imageData.url}')`;
-        item.appendChild(imageWrapper);
+        // Check if this is the intro slide
+        if (imageData.isIntro) {
+          // Create intro content slide
+          const introWrapper = document.createElement("div");
+          introWrapper.className = "carousel__item-intro";
+          introWrapper.innerHTML = imageData.content;
+          item.appendChild(introWrapper);
+        } else {
+          // Create image wrapper
+          const imageWrapper = document.createElement("div");
+          imageWrapper.className = "carousel__item-image";
+          imageWrapper.style.backgroundImage = `url('${imageData.url}')`;
+          item.appendChild(imageWrapper);
 
-        // Add info overlay (only for active/center image)
-        if (offset === 0 && (imageData.title || imageData.caption)) {
-          const info = document.createElement("div");
-          info.className = "carousel__info";
+          // Add info overlay (only for active/center image)
+          if (offset === 0 && (imageData.title || imageData.caption)) {
+            const info = document.createElement("div");
+            info.className = "carousel__info";
 
-          if (imageData.title) {
-            const title = document.createElement("h3");
-            title.className = "carousel__info__title";
-            title.textContent = imageData.title;
-            info.appendChild(title);
+            if (imageData.title) {
+              const title = document.createElement("h3");
+              title.className = "carousel__info__title";
+              title.textContent = imageData.title;
+              info.appendChild(title);
+            }
+
+            if (imageData.caption) {
+              const caption = document.createElement("p");
+              caption.className = "carousel__info__caption";
+              caption.textContent = imageData.caption;
+              info.appendChild(caption);
+            }
+
+            item.appendChild(info);
           }
-
-          if (imageData.caption) {
-            const caption = document.createElement("p");
-            caption.className = "carousel__info__caption";
-            caption.textContent = imageData.caption;
-            info.appendChild(caption);
-          }
-
-          item.appendChild(info);
         }
 
         track.appendChild(item);

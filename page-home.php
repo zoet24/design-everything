@@ -68,7 +68,11 @@ if ($image_ids) {
         </div>
         
         <?php if (!empty($carousel_images)): ?>
-            <div class="carousel home-loading-carousel" data-images='<?php echo json_encode(array_values($carousel_images)); ?>'>
+            <div 
+                class="carousel home-loading-carousel" 
+                data-images='<?php echo json_encode(array_values($carousel_images)); ?>'
+                data-intro-content='<?php echo esc_attr(apply_filters('the_content', $intro_post->post_content)); ?>'
+            >
                 <div class="carousel__track"></div>
             </div>
         <?php endif; ?>

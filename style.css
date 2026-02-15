@@ -941,6 +941,25 @@ body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__nav {
   }
 }
 
+.carousel__item-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--yellow-paper);
+  background-size: cover;
+  background-position: center;
+  padding: 1rem;
+  overflow-y: auto;
+  z-index: 0;
+}
+@media (min-width: 601px) {
+  .carousel__item-intro {
+    display: none;
+  }
+}
+
 :root {
   --nav-height: 53.5px;
 }
