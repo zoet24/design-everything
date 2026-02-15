@@ -25,8 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentPosition = navElement.getAttribute("data-nav-position");
     const previousPosition = sessionStorage.getItem("navPosition");
 
+    const isMobile = window.innerWidth <= 480;
+
     // Only animate if position changed
-    if (previousPosition && previousPosition !== currentPosition) {
+    if (previousPosition && previousPosition !== currentPosition && !isMobile) {
       navElement.classList.add("animate-in");
 
       // Remove animation class after it completes

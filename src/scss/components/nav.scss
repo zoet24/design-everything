@@ -131,12 +131,16 @@
 .current-menu-item > a::before,
 .current-menu-ancestor > a::before,
 .current-menu-parent > a::before {
-  opacity: 0.9;
+    opacity: 1 !important;
 }
 
 // Design Everything nav
 .nav-center {
   margin: 0 auto;
+
+  @media (max-width: $breakpoint-sm) {
+    margin: 0 !important;
+  }
 }
 
 // Secondary nav (Other, Insta, Shop)
@@ -145,6 +149,16 @@
   position: absolute;
   font-size: $font-size-sm;
   text-transform: none;
+
+  @media (max-width: $breakpoint-sm) {
+    left: auto !important;
+    right: 0 !important;
+
+    li {
+      margin-left: $space-sm !important;
+      margin-right: 0 !important;
+    }
+  }
 
   li:hover {
     text-decoration: underline;

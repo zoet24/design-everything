@@ -115,11 +115,16 @@
 .current-menu-item > a::before,
 .current-menu-ancestor > a::before,
 .current-menu-parent > a::before {
-  opacity: 0.9;
+  opacity: 1 !important;
 }
 
 .nav-center {
   margin: 0 auto;
+}
+@media (max-width: 600px) {
+  .nav-center {
+    margin: 0 !important;
+  }
 }
 
 .nav-left,
@@ -127,6 +132,18 @@
   position: absolute;
   font-size: 0.875rem;
   text-transform: none;
+}
+@media (max-width: 600px) {
+  .nav-left,
+  .nav-right {
+    left: auto !important;
+    right: 0 !important;
+  }
+  .nav-left li,
+  .nav-right li {
+    margin-left: 0.5rem !important;
+    margin-right: 0 !important;
+  }
 }
 .nav-left li:hover,
 .nav-right li:hover {
