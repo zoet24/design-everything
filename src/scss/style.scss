@@ -6,8 +6,6 @@
 @use "./cpts/platform/platform.scss" as platform;
 @use "./cpts/progress/progress.scss" as progress;
 @use "./pages/home.scss" as home;
-@use "./utility/card.scss" as card;
-@use "./utility/grid.scss" as grid;
 
 :root {
   --nav-height: #{$nav-height};

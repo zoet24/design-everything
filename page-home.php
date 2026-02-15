@@ -42,7 +42,7 @@ if ($image_ids) {
 <div class="page-content home-loading" data-nav-position="top-center">
     <?php if ($intro_background_image && $intro_post): ?>
         <div 
-            class="text-box-slide text-box-slide--toggleable text-box-slide--home-loading closed" 
+            class="text-box-slide text-box-slide--toggleable text-box-slide--home text-box-slide--home-loading closed" 
             style="background-image: url('<?php echo esc_url($intro_background_image['url']); ?>');"
             data-origin="top-center"
         >

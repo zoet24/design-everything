@@ -70,8 +70,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isAnimating) return;
       isAnimating = true;
 
-      track.style.transform =
-        "translateX(calc(-1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
+      const isMobile = window.innerWidth <= 480;
+
+      if (isMobile) {
+        // Mobile: width is (100vw - nav-height) + gap is (nav-height / 4)
+        track.style.transform =
+          "translateX(calc(-1 * (100vw - var(--nav-height) + (var(--nav-height) / 4))))";
+      } else {
+        // Desktop: width is (100vw - 4 * nav-height) + gap is nav-height
+        track.style.transform =
+          "translateX(calc(-1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
+      }
 
       setTimeout(() => {
         currentIndex = (currentIndex + 1) % images.length;
@@ -84,8 +93,17 @@ document.addEventListener("DOMContentLoaded", () => {
       if (isAnimating) return;
       isAnimating = true;
 
-      track.style.transform =
-        "translateX(calc(1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
+      const isMobile = window.innerWidth <= 480;
+
+      if (isMobile) {
+        // Mobile: width is (100vw - nav-height) + gap is (nav-height / 4)
+        track.style.transform =
+          "translateX(calc(1 * (100vw - var(--nav-height) + (var(--nav-height) / 4))))";
+      } else {
+        // Desktop: width is (100vw - 4 * nav-height) + gap is nav-height
+        track.style.transform =
+          "translateX(calc(1 * (100vw - (4 * var(--nav-height)) + var(--nav-height))))";
+      }
 
       setTimeout(() => {
         currentIndex = (currentIndex - 1 + images.length) % images.length;

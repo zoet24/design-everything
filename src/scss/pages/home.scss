@@ -92,6 +92,11 @@ body[data-home-loading="true"] {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: $breakpoint-sm) {
+    top: calc($nav-height * 1.25);
+    bottom: calc($nav-height * 1.25);
+  }
 }
 
 .carousel__track {
@@ -100,6 +105,10 @@ body[data-home-loading="true"] {
   align-items: center;
   transition: transform 0.5s ease-in-out;
   height: 100%;
+
+  @media (max-width: $breakpoint-sm) {
+    gap: calc($nav-height / 4);
+  }
 }
 
 .carousel__item {
@@ -107,6 +116,10 @@ body[data-home-loading="true"] {
   width: calc(100vw - (4 * $nav-height));
   height: 100%;
   position: relative;
+
+  @media (max-width: $breakpoint-sm) {
+    width: calc(100vw - ($nav-height));
+  }
   
   &.active {
     cursor: pointer;
@@ -136,6 +149,17 @@ body[data-home-loading="true"] {
     }
     
     &:hover {
+      &::before {
+        opacity: 1;
+      }
+      
+      .carousel__info {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
       &::before {
         opacity: 1;
       }
@@ -195,6 +219,10 @@ body[data-home-loading="true"] {
   opacity: 0.7 !important;
   pointer-events: all;
   z-index: 5;
+
+  @media (max-width: $breakpoint-sm) {
+    width: calc($nav-height / 4);
+  }
   
   &--left {
     left: 0;
@@ -217,6 +245,10 @@ body[data-home-loading="true"] {
   z-index: 10;
   padding: 2rem;
   transition: opacity 0.2s ease-in-out;
+
+  @media (max-width: $breakpoint-sm) {
+     font-size: 2rem;
+  }
   
   &:hover {
     opacity: 0.7;
@@ -224,9 +256,17 @@ body[data-home-loading="true"] {
   
   &--prev {
     left: 0;
+
+    @media (max-width: $breakpoint-sm) {
+       padding-left: $space-sm;
+    }
   }
   
   &--next {
     right: 0;
+
+    @media (max-width: $breakpoint-sm) {
+        padding-right: $space-sm;
+    }
   }
 }

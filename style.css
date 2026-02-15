@@ -254,6 +254,15 @@
   display: inline-block;
 }
 
+@media (max-width: 600px) {
+  .text-box-slide--home {
+    display: none;
+  }
+}
+.text-box-slide--home .text-box-content {
+  max-height: calc(75vw - 2rem);
+}
+
 .text-box-content {
   position: relative;
   z-index: 2;
@@ -766,6 +775,12 @@ body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__nav {
   align-items: center;
   justify-content: center;
 }
+@media (max-width: 600px) {
+  .carousel {
+    top: 66.875px;
+    bottom: 66.875px;
+  }
+}
 
 .carousel__track {
   display: flex;
@@ -774,12 +789,22 @@ body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__nav {
   transition: transform 0.5s ease-in-out;
   height: 100%;
 }
+@media (max-width: 600px) {
+  .carousel__track {
+    gap: 13.375px;
+  }
+}
 
 .carousel__item {
   flex-shrink: 0;
   width: calc(100vw - 214px);
   height: 100%;
   position: relative;
+}
+@media (max-width: 600px) {
+  .carousel__item {
+    width: calc(100vw - 53.5px);
+  }
 }
 .carousel__item.active {
   cursor: pointer;
@@ -809,6 +834,15 @@ body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__nav {
 .carousel__item.active:hover .carousel__info {
   opacity: 1;
   pointer-events: all;
+}
+@media (max-width: 600px) {
+  .carousel__item.active::before {
+    opacity: 1;
+  }
+  .carousel__item.active .carousel__info {
+    opacity: 1;
+    pointer-events: all;
+  }
 }
 
 .carousel__item-image {
@@ -857,6 +891,11 @@ body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__nav {
   pointer-events: all;
   z-index: 5;
 }
+@media (max-width: 600px) {
+  .carousel__overlay {
+    width: 13.375px;
+  }
+}
 .carousel__overlay--left {
   left: 0;
 }
@@ -877,14 +916,29 @@ body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__nav {
   padding: 2rem;
   transition: opacity 0.2s ease-in-out;
 }
+@media (max-width: 600px) {
+  .carousel__nav {
+    font-size: 2rem;
+  }
+}
 .carousel__nav:hover {
   opacity: 0.7;
 }
 .carousel__nav--prev {
   left: 0;
 }
+@media (max-width: 600px) {
+  .carousel__nav--prev {
+    padding-left: 0.5rem;
+  }
+}
 .carousel__nav--next {
   right: 0;
+}
+@media (max-width: 600px) {
+  .carousel__nav--next {
+    padding-right: 0.5rem;
+  }
 }
 
 :root {
