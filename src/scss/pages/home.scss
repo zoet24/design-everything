@@ -1,7 +1,6 @@
 @use "../variables" as *;
 
 // Initial loading states
-// Initial loading states (hidden)
 body[data-home-loading="true"] {
   .site-header.home-loading {
     transform: translateY(-100%);
@@ -16,6 +15,17 @@ body[data-home-loading="true"] {
   .text-box-slide--home-loading {
     transform: translateX(-50%) translateY(-100%) !important;
     transition: transform 0.6s ease 0.6s;
+    
+    // Hide only the text content, not the background
+    .text-box-post {
+      opacity: 0;
+      transition: opacity 0.6s ease 0.9s; // Delay after slide-in
+    }
+    
+    h2 {
+      opacity: 0;
+      transition: opacity 0.6s ease 0.9s;
+    }
   }
   
   .home-loading-carousel {
@@ -24,6 +34,12 @@ body[data-home-loading="true"] {
     .carousel__nav {
       opacity: 0;
       transition: opacity 0.4s ease 0.3s;
+    }
+    
+    // Hide only intro text content on mobile, not background
+    .carousel__item-intro > * {
+      opacity: 0;
+      transition: opacity 0.6s ease 0.9s;
     }
   }
   
@@ -44,12 +60,26 @@ body[data-home-loading="true"] {
     
     .text-box-slide--home-loading {
       transform: translateX(-50%) translateY(0) !important;
+      
+      // Fade in text content
+      .text-box-post {
+        opacity: 1;
+      }
+      
+      h2 {
+        opacity: 1;
+      }
     }
     
     .home-loading-carousel {
       .carousel__item:not(.active),
       .carousel__overlay,
       .carousel__nav {
+        opacity: 1;
+      }
+      
+      // Fade in intro text on mobile
+      .carousel__item-intro > * {
         opacity: 1;
       }
     }
@@ -64,7 +94,6 @@ body[data-home-loading="true"] {
   justify-content: center;
   position: relative;
   overflow: hidden;
-  background: $colour-nav;
 }
 
 .home-hero__overlay {
@@ -215,7 +244,6 @@ body[data-home-loading="true"] {
   top: 0;
   bottom: 0;
   width: $nav-height;
-  background: $colour-nav;
   opacity: 0.7 !important;
   pointer-events: all;
   z-index: 5;
