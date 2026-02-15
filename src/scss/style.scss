@@ -1,5 +1,6 @@
 @use "fonts";
 @use "variables" as *;
+@use "./components/carousel.scss" as carousel;
 @use "./components/nav.scss" as nav;
 @use "./components/page-intros.scss" as pageIntros;
 @use "./cpts/people/people.scss" as people;

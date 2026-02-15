@@ -1,0 +1,208 @@
+@use "../variables" as *;
+
+.carousel {
+  position: absolute;
+  top: $nav-height;
+  left: 0;
+  right: 0;
+  bottom: $nav-height;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: $breakpoint-sm) {
+    top: calc($nav-height * 1.25);
+    bottom: calc($nav-height * 1.25);
+  }
+}
+
+.carousel__track {
+  display: flex;
+  gap: $nav-height;
+  align-items: center;
+  transition: transform 0.5s ease-in-out;
+  height: 100%;
+
+  @media (max-width: $breakpoint-sm) {
+    gap: calc($nav-height / 4);
+  }
+}
+
+.carousel__item {
+  flex-shrink: 0;
+  width: calc(100vw - (4 * $nav-height));
+  height: 100%;
+  position: relative;
+
+  @media (max-width: $breakpoint-sm) {
+    width: calc(100vw - ($nav-height));
+  }
+  
+  &.active {
+    cursor: pointer;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: var(--yellow-paper);
+      background-size: cover;
+      background-position: center;
+      opacity: 0;
+      pointer-events: none;
+      z-index: 2;
+      
+      // Create border frame effect
+      mask: linear-gradient(#fff 0 0) content-box, 
+            linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                    linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      padding: $frame-thickness-lg $frame-thickness-lg 0;
+    }
+    
+    &:hover {
+      &::before {
+        opacity: 1;
+      }
+      
+      .carousel__info {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+
+    @media (max-width: $breakpoint-sm) {
+      &::before {
+        opacity: 1;
+      }
+      
+      .carousel__info {
+        opacity: 1;
+        pointer-events: all;
+      }
+    }
+  }
+}
+
+.carousel__item-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+.carousel__info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: var(--yellow-paper);
+  background-size: cover;
+  background-position: center;
+  padding: $space-sm;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 6;
+  display: flex;
+  justify-content: space-between;
+  
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: $font-weight-body;
+    margin: 0;
+  }
+  
+  &__caption {
+    font-size: $font-size-sm;
+    margin: 0;
+  }
+}
+
+.carousel__overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: $nav-height;
+  opacity: 0.7 !important;
+  pointer-events: all;
+  z-index: 5;
+
+  @media (max-width: $breakpoint-sm) {
+    width: calc($nav-height / 4);
+  }
+  
+  &--left {
+    left: 0;
+  }
+  
+  &--right {
+    right: 0;
+  }
+}
+
+.carousel__nav {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 2.5rem;
+  color: $colour-text;
+  cursor: pointer;
+  z-index: 10;
+  padding: 2rem;
+  transition: opacity 0.2s ease-in-out;
+
+  @media (max-width: $breakpoint-sm) {
+     font-size: 2rem;
+  }
+  
+  &:hover {
+    opacity: 0.7;
+  }
+  
+  &--prev {
+    left: 0;
+
+    @media (max-width: $breakpoint-sm) {
+       padding-left: $space-sm;
+    }
+  }
+  
+  &--next {
+    right: 0;
+
+    @media (max-width: $breakpoint-sm) {
+        padding-right: $space-sm;
+    }
+  }
+}
+
+.carousel__item-intro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: var(--yellow-paper);
+  background-size: cover;
+  background-position: center;
+  padding: $space-md;
+  overflow-y: auto;
+  z-index: 0;
+  
+  // Only on mobile
+  @media (min-width: calc($breakpoint-sm + 1px)) {
+    display: none;
+  }
+}

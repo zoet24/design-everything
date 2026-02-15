@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // On mobile, insert intro content as first slide
     if (isMobile && introContent) {
       images.unshift({
-        url: null, // No background image
+        url: null,
         title: null,
         caption: null,
         isIntro: true,

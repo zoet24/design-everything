@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (hasSeenAnimation) {
       // Skip animation, show everything immediately
       document.body.classList.add("home-loaded");
-      document.body.removeAttribute("data-home-loading"); // Remove loading attribute
+      document.body.removeAttribute("data-home-loading");
 
       // Remove loading classes
       const header = document.querySelector(".site-header");
@@ -22,8 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (textBox) textBox.classList.remove("text-box-slide--home-loading");
       if (carousel) carousel.classList.remove("home-loading-carousel");
       if (logoOverlay) logoOverlay.style.display = "none";
-
-      // Don't exit early - still need to build carousel
     } else {
       // Mark animation as shown for this session
       sessionStorage.setItem("homeAnimationShown", "true");
@@ -36,11 +34,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.body.classList.add("home-loaded");
 
-        // Wait for nav animations to complete, then trigger page intro open
+        // Wait for nav animations to complete
         setTimeout(() => {
           const toggle = document.querySelector(".text-box-toggle");
+          const textBox = document.querySelector(
+            ".text-box-slide--home-loading"
+          );
+
+          // Remove loading class FIRST to restore opacity
+          if (textBox) {
+            textBox.classList.remove("text-box-slide--home-loading");
+          }
+
+          // THEN click toggle after a brief delay to let opacity restore
           if (toggle) {
-            toggle.click(); // Simulate click to open the page intro
+            setTimeout(() => {
+              toggle.click(); // Simulate click to open the page intro
+            }, 100); // Small delay to ensure opacity has restored
           }
         }, 1500);
       };
