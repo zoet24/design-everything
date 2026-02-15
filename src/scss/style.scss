@@ -76,6 +76,11 @@ main:not(.home-hero) {
     width: 75%;
     margin: 0 auto;
     padding: $space-md 0;
+
+    @media (max-width: $breakpoint-sm) {
+      width: 100% !important;
+      padding: $space-md;
+    }
   }
 }
 

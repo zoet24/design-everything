@@ -77,10 +77,41 @@
                     padding: $frame-thickness-lg $frame-thickness-lg 0;
                 }
             }
+
+            // Always show border on mobile
+            @media (max-width: $breakpoint-sm) {
+                text-decoration: none;
+                background-image: var(--page-bg-image);
+                background-size: cover;
+                background-position: center;
+        
+                .platform__photo::before {
+                    opacity: 1;
+                    background-image: var(--page-bg-image);
+                    background-size: cover;
+                    background-position: center;
+                    // Create border frame effect
+                    mask: linear-gradient(#fff 0 0) content-box, 
+                          linear-gradient(#fff 0 0);
+                    mask-composite: exclude;
+                    -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                                  linear-gradient(#fff 0 0);
+                    -webkit-mask-composite: xor;
+                    padding: $frame-thickness-lg $frame-thickness-lg 0;
+                }
+            }
         }
         
         .platform:nth-child(even) {
             grid-column: 3;
         }
     }   
+}
+
+.platform-single {
+    margin-top: 0;
+
+    @media (max-width: $breakpoint-sm) {
+        margin-top: $nav-height !important;
+    }
 }

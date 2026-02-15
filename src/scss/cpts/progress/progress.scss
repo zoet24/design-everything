@@ -108,4 +108,33 @@
             padding: $frame-thickness;
         }
     }
+
+    // Always show border on mobile
+    @media (max-width: $breakpoint-sm) {
+        text-decoration: none;
+        
+        &::before {
+            opacity: 1;
+            background-image: var(--page-bg-image);
+            background-size: cover;
+            background-position: center;
+            border: $frame-thickness solid transparent; // Creates the border "frame"
+            // Use mask to only show the border
+            mask: linear-gradient(#fff 0 0) content-box, 
+                  linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                          linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            padding: $frame-thickness;
+        }
+    }
+}
+
+.progress-single {
+    margin-top: 0;
+
+    @media (max-width: $breakpoint-sm) {
+        margin-top: $nav-height !important;
+    }
 }

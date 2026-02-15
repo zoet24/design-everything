@@ -109,6 +109,29 @@
             padding: $frame-thickness-lg $frame-thickness-lg 0;
         }
     }
+
+    // Always show border on mobile
+    @media (max-width: $breakpoint-sm) {
+        text-decoration: none;
+        background-image: var(--page-bg-image);
+        background-size: cover;
+        background-position: center;
+
+        .person__photo::before {
+            opacity: 1;
+            background-image: var(--page-bg-image);
+            background-size: cover;
+            background-position: center;
+            // Create border frame effect
+            mask: linear-gradient(#fff 0 0) content-box, 
+                  linear-gradient(#fff 0 0);
+            mask-composite: exclude;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, 
+                          linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            padding: $frame-thickness-lg $frame-thickness-lg 0;
+        }
+    }
 }
 
 // Single person CPT page: Person description
@@ -156,5 +179,9 @@
     &__content {
         grid-column: 2;
         padding: $space-md;
+
+        @media (max-width: $breakpoint-sm) {
+            padding-top: 0 !important;
+        }
     }
 }
