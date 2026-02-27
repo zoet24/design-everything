@@ -14,7 +14,7 @@ function theme_enqueue_scripts() {
     );
 
     // Home page loading script (only on home page)
-    if (is_page_template('page-home.php')) {
+    if (is_front_page()) {
         wp_enqueue_script(
             'home-loading',
             get_template_directory_uri() . '/src/js/home-loading.js',
@@ -25,7 +25,7 @@ function theme_enqueue_scripts() {
     }
 
     // Home page carousel script (only on home page)
-    if (is_page_template('page-home.php')) {
+    if (is_front_page()) {
         wp_enqueue_script(
             'home-carousel',
             get_template_directory_uri() . '/src/js/carousel.js',

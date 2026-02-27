@@ -8,9 +8,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
   <?php wp_head(); ?>
 </head>
-<body <?php body_class(); ?> <?php if (is_page_template('page-home.php')) echo 'data-home-loading="true"'; ?>>
+<body <?php body_class(); ?> <?php if (is_front_page()) echo 'data-home-loading="true"'; ?>>
 
-<header class="site-header <?php if (is_page_template('page-home.php')) echo 'home-loading'; ?>">
+<header class="site-header <?php if (is_front_page()) echo 'home-loading'; ?>">
   <nav class="nav">
     <div class="nav-center">
       <?php
