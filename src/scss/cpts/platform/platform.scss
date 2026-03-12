@@ -74,7 +74,7 @@
                     -webkit-mask: linear-gradient(#fff 0 0) content-box, 
                                   linear-gradient(#fff 0 0);
                     -webkit-mask-composite: xor;
-                    padding: $frame-thickness-lg $frame-thickness-lg 0;
+                    padding: $frame-thickness $frame-thickness 0;
                 }
             }
 
@@ -97,7 +97,7 @@
                     -webkit-mask: linear-gradient(#fff 0 0) content-box, 
                                   linear-gradient(#fff 0 0);
                     -webkit-mask-composite: xor;
-                    padding: $frame-thickness-lg $frame-thickness-lg 0;
+                    padding: $frame-thickness $frame-thickness 0;
                 }
             }
         }
