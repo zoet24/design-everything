@@ -288,7 +288,17 @@ Version: 1.0
 .nav li a[data-position=top-center]::before {
   left: 50%;
   transform: translateX(-50%);
-  width: 60vw;
+  width: 75vw;
+}
+@media (max-width: 600px) {
+  .nav li a[data-position=top-center]::before {
+    width: 50vw !important;
+  }
+}
+@media (max-width: 810px) {
+  .nav li a[data-position=top-center]::before {
+    width: 60vw !important;
+  }
 }
 .nav li a[data-position=bottom-left]::before {
   left: 0;
@@ -411,10 +421,20 @@ Version: 1.0
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 60vw;
+  width: 75vw;
   max-height: 75vh;
   height: auto;
   transition: max-height 0.3s ease;
+}
+@media (max-width: 600px) {
+  .text-box-slide[data-origin=top-center] {
+    width: 50vw !important;
+  }
+}
+@media (max-width: 810px) {
+  .text-box-slide[data-origin=top-center] {
+    width: 60vw !important;
+  }
 }
 .text-box-slide[data-origin=top-center] h2 {
   text-align: center;
@@ -508,7 +528,7 @@ Version: 1.0
   opacity: 0;
   margin: 0;
   overflow: hidden;
-  padding-bottom: 0;
+  padding: 0;
   transition: max-height 0.4s ease, opacity 0.2s ease, padding 0.2s ease;
 }
 .text-box-slide--toggleable.closed .chevron {
@@ -963,6 +983,10 @@ body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__nav {
 }
 body[data-home-loading=true].home-loaded .home-loading-carousel .carousel__item-intro > * {
   opacity: 1;
+}
+
+.home .text-box-post {
+  padding: 1rem;
 }
 
 .home-hero {

@@ -96,6 +96,14 @@
       left: 50%;
       transform: translateX(-50%);
       width: $page-intro-width-top;
+
+      @media (max-width: $breakpoint-sm) {
+        width: $page-intro-width-top--sm !important;
+      }
+
+      @media (max-width: $breakpoint-md) {
+        width: $page-intro-width-top--md !important;
+      }
     }
     
     // People (footer left)
