@@ -5,7 +5,7 @@ Version: 1.0
 */
 @font-face {
   font-family: "Roobert-Regular";
-  src: url("../assets/fonts/Roobert-Regular-Regular.woff2") format("woff2"), url("../assets/fonts/Roobert-Regular-Regular.woff") format("woff"), url("../assets/fonts/Roobert-Regular-Regular.ttf") format("truetype"), url("../assets/fonts/Roobert-Regular-Regular.otf") format("opentype");
+  src: url("assets/fonts/Roobert-Regular.woff2") format("woff2"), url("assets/fonts/Roobert-Regular.woff") format("woff"), url("assets/fonts/Roobert-Regular.ttf") format("truetype"), url("assets/fonts/Roobert-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -245,7 +245,6 @@ Version: 1.0
   display: flex;
   align-items: center;
   font-size: 1.125rem;
-  font-weight: 600;
   position: relative;
   overflow: hidden;
 }
@@ -476,7 +475,7 @@ Version: 1.0
 }
 .text-box-content h2 {
   font-family: "Roobert-Regular", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 1.125rem;
   text-transform: uppercase;
   flex-shrink: 0;
