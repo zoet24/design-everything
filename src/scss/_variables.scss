@@ -51,12 +51,15 @@ $shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 
 // Dims
 $nav-height: 53.5px;
-
 $frame-thickness: 4px;
 
+// Top nav DE
 $page-intro-width-top--sm: 50vw;
 $page-intro-width-top--md: 60vw;
 $page-intro-width-top: 75vw;
 $page-intro-height-top: 75vh;
-$page-intro-width-bottom: 33.33vw;
+
+// Bottom nav elements
+$page-intro-width-bottom--md: 33.33vw;
+$page-intro-width-bottom: 25vw;
 $page-intro-height-bottom: 100%;

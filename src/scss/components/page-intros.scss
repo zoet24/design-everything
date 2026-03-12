@@ -8,6 +8,10 @@
   z-index: 100;
   overflow: hidden;
 
+  @media (max-width: $breakpoint-md) {
+    width: $page-intro-width-bottom--md !important;
+  }
+
    // Mobile
    @media (max-width: $breakpoint-sm) {
     position: static;

@@ -110,6 +110,10 @@
     &[data-position="bottom-left"]::before {
       left: 0;
       width: $page-intro-width-bottom;
+
+      @media (max-width: $breakpoint-md) {
+        width: $page-intro-width-bottom--md !important;
+      }
     }
     
     // Platform (footer center)
@@ -120,6 +124,10 @@
         left: 50%;
         transform: translateX(-50%);
         width: $page-intro-width-bottom;
+
+        @media (max-width: $breakpoint-md) {
+          width: $page-intro-width-bottom--md !important;
+        }
       }
     }
     
@@ -130,6 +138,10 @@
       &::before {
         right: 0;
         width: $page-intro-width-bottom;
+
+        @media (max-width: $breakpoint-md) {
+          width: $page-intro-width-bottom--md !important;
+        }
       }
     }
   }

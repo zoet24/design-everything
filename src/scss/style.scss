@@ -77,13 +77,17 @@ main:not(.home-hero) {
   height: 100%;
 
   &--narrow {
-    width: 75%;
+    width: 50%;
     margin: 0 auto;
     padding: $space-md 0;
 
     @media (max-width: $breakpoint-sm) {
       width: 100% !important;
       padding: $space-md;
+    }
+
+    @media (max-width: $breakpoint-md) {
+      width: 75% !important;
     }
   }
 }
